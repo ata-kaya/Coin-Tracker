@@ -67,14 +67,14 @@ class CoinWidget : AppWidgetProvider() {
                                 .mapTo(list) {
                                     Coin(array.optJSONObject(it))
                                 }
+                            val tempList: ArrayList<Coin> = ArrayList()
                         list = if (SharedPreference.getInstance(context).hasCustomCoin()) {
                             val coins: ArrayList<String> = SharedPreference.getInstance(context).getCustomCoins()
-                            val tempList: ArrayList<Coin> = ArrayList()
                             for (i in 0 until coins.size)
                                 tempList.addAll(list.filter { coin -> coin.coinSymbol == coins[i] })
                             tempList
                         } else {
-                            list.subList(0, 6) as ArrayList<Coin>
+                            ArrayList(list.subList(0, 6))
                         }
                         //TODO set only first 6 item or custom coins
                         println("main list = ".plus(array.length()))

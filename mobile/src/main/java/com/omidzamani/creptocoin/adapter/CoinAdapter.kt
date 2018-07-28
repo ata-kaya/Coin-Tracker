@@ -1,10 +1,8 @@
 package com.omidzamani.creptocoin.adapter
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +10,9 @@ import android.widget.CheckBox
 import android.widget.TextView
 import com.omidzamani.creptocoin.model.Coin
 import com.omidzamani.creptocoin.R
-import kotlinx.android.synthetic.main.list.view.*
+import kotlinx.android.synthetic.main.coin_list.view.*
 import java.util.ArrayList
-import android.widget.CompoundButton
 import android.widget.Toast
-import com.omidzamani.creptocoin.MainActivity
 import com.omidzamani.creptocoin.interfaces.CustomCoinsListener
 import com.omidzamani.creptocoin.utils.SharedPreference
 
@@ -25,11 +21,11 @@ import com.omidzamani.creptocoin.utils.SharedPreference
  * Created by omidzamani on 15.07.2018.
  * this is my adapter for listing coins
  */
-class Adapter constructor(private val listener: CustomCoinsListener,
-                          private val context: Context,
-                          private var items: ArrayList<Coin>,
-                          private val isEditMode: Boolean)
-    : RecyclerView.Adapter<Adapter.MyViewHolder>() {
+class CoinAdapter constructor(private val listener: CustomCoinsListener,
+                              private val context: Context,
+                              private var items: ArrayList<Coin>,
+                              private val isEditMode: Boolean)
+    : RecyclerView.Adapter<CoinAdapter.MyViewHolder>() {
 
 
 
@@ -38,7 +34,7 @@ class Adapter constructor(private val listener: CustomCoinsListener,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView: View =
             LayoutInflater.from(parent.context)
-                    .inflate(R.layout.list, parent, false)
+                    .inflate(R.layout.coin_list, parent, false)
 
         return MyViewHolder(itemView)
 

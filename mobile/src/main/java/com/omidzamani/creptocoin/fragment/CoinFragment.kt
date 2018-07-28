@@ -1,60 +1,88 @@
-package com.omidzamani.creptocoin
+package com.omidzamani.creptocoin.fragment
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.Toast
-import com.omidzamani.creptocoin.adapter.Adapter
+import com.omidzamani.creptocoin.R
+import com.omidzamani.creptocoin.adapter.CoinAdapter
 import com.omidzamani.creptocoin.interfaces.CustomCoinsListener
 import com.omidzamani.creptocoin.model.Coin
 import com.omidzamani.creptocoin.utils.SharedPreference
-import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.*
+import kotlinx.android.synthetic.main.fragment_coin.*
+import kotlinx.android.synthetic.main.fragment_coin.view.*
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Response
 import org.json.JSONArray
 import java.io.IOException
 
-
-class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener, CustomCoinsListener {
+/**
+ * Created by omidzamani on 24.07.2018.
+ * A fragment containing coins view.
+ */
+class CoinFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, CustomCoinsListener {
 
 
     private lateinit var pref: SharedPreference
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        pref = SharedPreference.getInstance(applicationContext)
-        swipe_refresh_layout.setOnRefreshListener(this)
+    private lateinit var rootView:View;
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        rootView = inflater.inflate(R.layout.fragment_coin, container, false)
+        pref = SharedPreference.getInstance(context)
+        rootView.swipe_refresh_layout.setOnRefreshListener(this)
         api(false)
-        add_button.setOnClickListener{
+        rootView.add_button.setOnClickListener{
             if (pref.temp_coins.size == 6){
                 pref.addCoins()
                 api(false)
             } else {
-                Toast.makeText(applicationContext,"You should select 6 coin", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"You should select 6 coin", Toast.LENGTH_LONG).show()
             }
+        }
+        return rootView
+    }
+
+    companion object {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private val ARG_SECTION_NUMBER = "section_number"
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        fun newInstance(sectionNumber: Int): CoinFragment {
+            val fragment = CoinFragment()
+            val args = Bundle()
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber)
+            fragment.arguments = args
+            return fragment
         }
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-        val menuInflater : MenuInflater = menuInflater
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
+
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        super.onCreateOptionsMenu(menu)
+//        val menuInflater : MenuInflater = menuInflater
+//        menuInflater.inflate(R.menu.main, menu)
+//        return true
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item!!.itemId == R.id.edit_menu) {
-            api(true)
+//            api(true)
+//            startActivity(Intent(this, MainActivity::class.java))
         } else if (item.itemId == R.id.delete_manu) {
-            SharedPreference.getInstance(applicationContext).deleteAllCoins()
+            SharedPreference.getInstance(context).deleteAllCoins()
         }
         return true
     }
@@ -86,7 +114,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener, 
         else
             View.GONE
 
-        add_button.visibility = visibility
+        rootView.add_button.visibility = visibility
         API.instance.run("https://api.coinmarketcap.com/v1/ticker/", object : Callback {
             override fun onFailure(call: Call, e: IOException) {}
             override fun onResponse(call: Call, response: Response) {
@@ -100,12 +128,15 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener, 
                     }
                     Handler(Looper.getMainLooper()).post({
                         swipe_refresh_layout.isRefreshing = false
-                        coin_list.adapter = Adapter(this@MainActivity, applicationContext, list, isEditMode)
-                        coin_list.layoutManager = LinearLayoutManager(applicationContext)
+                        coin_list.adapter = CoinAdapter(this@CoinFragment, context, list, isEditMode)
+                        coin_list.layoutManager = LinearLayoutManager(context)
                     })
                 }
 
             }
         })
     }
+
+
+
 }

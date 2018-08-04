@@ -3,6 +3,7 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
+/.idea
 .DS_Store
 /build
 /captures
@@ -79,6 +80,11 @@ fastlane/readme.md
 
 ### Android Patch ###
 gen-external-apklibs
+
+
+#this is for key
+mobile/*.keystore
+/gradle.properties
 
 
 # End of https://www.gitignore.io/api/android

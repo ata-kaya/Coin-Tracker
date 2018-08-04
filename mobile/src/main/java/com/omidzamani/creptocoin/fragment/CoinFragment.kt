@@ -115,16 +115,15 @@ class CoinFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, CustomCoi
             View.GONE
 
         rootView.add_button.visibility = visibility
-        API.instance.run("https://api.coinmarketcap.com/v1/ticker/", object : Callback {
+        API.instance.run(getString(R.string.coin_api), object : Callback {
             override fun onFailure(call: Call, e: IOException) {}
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val list : ArrayList<Coin> = ArrayList()
                     val res: String = response.body()!!.string()
                     val array = JSONArray(res)
-                    for (i in 0 until array.length()){
-                        println(i)
-                        list.add(Coin(array.optJSONObject(i)))
+                    (0 until array.length()).mapTo(list) {
+                        Coin(array.optJSONObject(it))
                     }
                     Handler(Looper.getMainLooper()).post({
                         swipe_refresh_layout.isRefreshing = false

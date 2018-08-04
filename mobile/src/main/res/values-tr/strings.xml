@@ -6,8 +6,9 @@
     <string name="delete">widgeti resetleme</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="tab_text_1">Coin Piyasası</string>
-    <string name="tab_text_2">Döviz</string>
+    <string name="tab_text_2">Döviz Piyasası</string>
     <string name="action_settings">Ayarlar</string>
     <string name="sell">Satış:&#160;</string>
     <string name="buy">Alış:&#160;</string>
+    <string name="currency_widget_title">Döviz Piyasası</string>
 </resources>

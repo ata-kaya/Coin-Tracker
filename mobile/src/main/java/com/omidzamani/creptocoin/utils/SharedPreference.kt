@@ -22,6 +22,12 @@ class SharedPreference private constructor(context: Context){
         return temp_coins.size > 0
     }
 
+
+    fun hasCustomCurrency(): Boolean {
+        return false
+    }
+
+
     fun canAddCustomCoin() : Boolean {
         return temp_coins.size < 6
     }

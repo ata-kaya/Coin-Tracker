@@ -55,17 +55,17 @@ class CurrencyAdapter constructor(private val listener: CustomCurrencyListener,
 
         if (isEditMode) {
             holder.checkBox.visibility = View.VISIBLE
-            holder.checkBox.isChecked = SharedPreference.getInstance(context).getCustomCoins().contains(item.currnecySymbol)
+            holder.checkBox.isChecked = SharedPreference.getInstance(context).getCustomCoins().contains(item.currencySymbol)
             holder.checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
                     if (!SharedPreference.getInstance(context).canAddCustomCoin()) {
                         buttonView.isChecked = false
                         Toast.makeText(context, "Limit is 6 coins", Toast.LENGTH_LONG).show()
                     } else {
-                        SharedPreference.getInstance(context).addCoin(item.currnecySymbol as String)
+                        SharedPreference.getInstance(context).addCoin(item.currencySymbol as String)
                     }
                 } else {
-                    SharedPreference.getInstance(context).deleteCoin(item.currnecySymbol as String)
+                    SharedPreference.getInstance(context).deleteCoin(item.currencySymbol as String)
                 }
                 listener.onCurrencyAddOrRemove()
             }

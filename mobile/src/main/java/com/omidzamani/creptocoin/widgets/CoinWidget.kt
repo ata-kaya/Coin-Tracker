@@ -1,4 +1,4 @@
-package com.omidzamani.creptocoin
+package com.omidzamani.creptocoin.widgets
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -8,6 +8,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.util.Log
 import android.widget.RemoteViews
+import com.omidzamani.creptocoin.BuildConfig
+import com.omidzamani.creptocoin.R
 import com.omidzamani.creptocoin.R.id.btn
 import com.omidzamani.creptocoin.model.Coin
 import com.omidzamani.creptocoin.utils.SharedPreference
@@ -25,6 +27,7 @@ class CoinWidget : AppWidgetProvider() {
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
+        Log.d("OMID", "coin ids="+appWidgetId)
             updateAppWidget(context, appWidgetManager, appWidgetIds)
         }
     }
@@ -37,15 +40,20 @@ class CoinWidget : AppWidgetProvider() {
         // Enter relevant functionality for when the last widget is disabled
     }
 
-//    override fun onReceive(context: Context?, intent: Intent?) {
-//        if (intent!!.hasExtra(MY_UPDATE) && intent.hasExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS)){
-//            val ids:Int = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,234)
-//            Log.d("OMID",""+intent.getIntExtra(MY_ID,54)+"/"+intent.getBooleanExtra(MY_UPDATE, false) +"this is touce".plus(ids))
-//            this.onUpdate(context!!, AppWidgetManager.getInstance(context), kotlin.intArrayOf(ids.toInt()))
-//        } else {
-//            super.onReceive(context, intent)
-//        }
-//    }
+    override fun onReceive(context: Context?, intent: Intent?) {
+        if (intent!!.hasExtra("widgetName") && intent.getStringExtra("widgetName").equals("omid")) {
+            val dd =intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS)
+            Log.d("omid","this is onrecieve="+dd[0])
+            if (dd.size > 1)
+                Log.d("omid","this is onrecieve="+ dd[1])
+        } else if (intent!!.hasExtra("widgetName") && intent.getStringExtra("widgetName").equals("omid2")) {
+            val dd = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS)
+            Log.d("omid","this is onrecieve2="+dd[0])
+            if (dd.size > 1)
+                Log.d("omid","this is onrecieve2="+dd[1])
+        } else
+            super.onReceive(context, intent)
+    }
 
 
     companion object {
@@ -56,7 +64,6 @@ class CoinWidget : AppWidgetProvider() {
             val views = RemoteViews(context.packageName, R.layout.coin_widget)
             views.setTextViewText(R.id.btn, "Refreshing")
             appWidgetManager.updateAppWidget(appWidgetId, views)
-            Log.d("OMID", "updated")
             getPrices(context, object : Callback {
                 override fun onResponse(call: Call?, response: Response) {
                     if (response.isSuccessful) {
@@ -67,7 +74,7 @@ class CoinWidget : AppWidgetProvider() {
                                 .mapTo(list) {
                                     Coin(array.optJSONObject(it))
                                 }
-                            val tempList: ArrayList<Coin> = ArrayList()
+                        val tempList: ArrayList<Coin> = ArrayList()
                         list = if (SharedPreference.getInstance(context).hasCustomCoin()) {
                             val coins: ArrayList<String> = SharedPreference.getInstance(context).getCustomCoins()
                             for (i in 0 until coins.size)
@@ -76,9 +83,7 @@ class CoinWidget : AppWidgetProvider() {
                         } else {
                             ArrayList(list.subList(0, 6))
                         }
-                        //TODO set only first 6 item or custom coins
-                        println("main list = ".plus(array.length()))
-                        views.setTextViewText(R.id.btn, "")
+                        views.setTextViewText(btn, "")
                         reRenderWidget(context, views, appWidgetManager, appWidgetId, list)
                     }
                 }
@@ -89,23 +94,13 @@ class CoinWidget : AppWidgetProvider() {
 
         }
 
-        private const val MY_UPDATE: String = "update"
-        private const val MY_ID: String = "id"
 
         private fun setButtonListener(context: Context, views: RemoteViews, appWidgetId: IntArray) {
-//            val intent = Intent(context, CoinWidget::class.java)
-////            intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-//            Log.w("OMID","this is id=".plus(appWidgetId))
-//            intent.putExtra(MY_ID, appWidgetId)
-//            intent.putExtra(MY_UPDATE,true)
-//            val pendingIntent = PendingIntent.getBroadcast(context,
-//                    0, intent, 0)
-//            views.setOnClickPendingIntent(R.id.btn, pendingIntent)
-
 
             val intent = Intent(context, CoinWidget::class.java)
             intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetId)
+            intent.putExtra("widgetName","omid2")
             val pendingIntent = PendingIntent.getBroadcast(context,
                     0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
             views.setOnClickPendingIntent(R.id.btn, pendingIntent)
@@ -124,7 +119,7 @@ class CoinWidget : AppWidgetProvider() {
                     views.setTextViewText(getCoinPercentViewId(i), "+".plus(list[i].coinPercent))
                     views.setTextColor(getCoinPercentViewId(i), Color.GREEN)
                 } else {
-                    views.setTextViewText(getCoinPercentViewId(i), "-".plus(list[i].coinPercent))
+                    views.setTextViewText(getCoinPercentViewId(i), list[i].coinPercent)
                     views.setTextColor(getCoinPercentViewId(i), Color.RED)
                 }
             }
@@ -133,9 +128,8 @@ class CoinWidget : AppWidgetProvider() {
         }
 
         private fun getPrices(context: Context, callback: Callback) {
-            var url = "https://api.coinmarketcap.com/v1/ticker"
 
-            API.instance.run(url, callback)
+            API.instance.run(context.getString(R.string.coin_api), callback)
         }
 
         private fun getCoinViewId(index: Int): Int {

@@ -29,7 +29,7 @@ constructor(item: JSONObject) {
         private set
     var currencyPriceSell: Double? = null
         private set
-    var currnecySymbol: String? = null
+    var currencySymbol: String? = null
         private set
 
 
@@ -39,7 +39,7 @@ constructor(item: JSONObject) {
         currencyPercent = item.getDouble("change_rate")
         currencyPriceBuy = item.getDouble("buying")
         currencyPriceSell = item.getDouble("selling")
-        currnecySymbol = item.getString("code")
+        currencySymbol = item.getString("code")
 
 
     }

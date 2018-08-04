@@ -53,18 +53,16 @@ class CurrencyFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, Custo
 
     private fun api(isEditMode : Boolean) {
 
-        API.instance.run("https://www.doviz.com/api/v1/currencies/all/latest", object : Callback {
+        API.instance.run(getString(R.string.currency_api), object : Callback {
             override fun onFailure(call: Call, e: IOException) {}
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val list : ArrayList<Currency> = ArrayList()
                     val res: String = response.body()!!.string()
                     val array = JSONArray(res)
-                    for (i in 0 until array.length()){
-                        println(i)
-                        list.add(Currency(array.optJSONObject(i)))
+                    (0 until array.length()).mapTo(list) {
+                        Currency(array.optJSONObject(it))
                     }
-                        println("osdfds")
                     Handler(Looper.getMainLooper()).post({
                         swipe_refresh_layout.isRefreshing = false
                         currency_list.adapter = CurrencyAdapter(this@CurrencyFragment, context, list, isEditMode)

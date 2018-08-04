@@ -15,11 +15,26 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            if (project.hasProperty('key')) {
+                storeFile file(key)
+                storePassword store_password
+                keyAlias key_alias
+                keyPassword key_password
+            }
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        disable 'MissingTranslation'
     }
 
     productFlavors {
@@ -50,10 +65,6 @@ dependencies {
     }
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
-    }
-    compile('io.socket:socket.io-client:1.0.0') {
-        // excluding org.json which is provided by Android
-        exclude group: 'org.json', module: 'json'
     }
     wearApp project(':wear')
     compile 'com.squareup.okhttp3:okhttp:3.6.0'

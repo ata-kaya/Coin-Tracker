@@ -44,11 +44,10 @@ class CurrencyAdapter constructor(private val listener: CustomCurrencyListener,
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = items[position]
-        val currencyFormat = DecimalFormat("#.##")
         holder.title.text = item.currencyFullName
-        holder.sell.text = context.getString(R.string.sell).plus(currencyFormat.format(item.currencyPriceSell).plus("₺"))
-        holder.buy.text = context.getString(R.string.buy).plus(currencyFormat.format(item.currencyPriceBuy).plus("₺"))
-        holder.percent.text = currencyFormat.format(item.currencyPercent).plus("%")
+        holder.sell.text = context.getString(R.string.sell).plus(String.format("%.2f", item.currencyPriceSell).plus("₺"))
+        holder.buy.text = context.getString(R.string.buy).plus(String.format("%.2f", item.currencyPriceBuy).plus("₺"))
+        holder.percent.text = String.format("%.2f", item.currencyPercent).plus("%")
         if (item.currencyPercent!! >= 0.0)
             holder.percent.setTextColor(ContextCompat.getColor(context, R.color.green))
         else

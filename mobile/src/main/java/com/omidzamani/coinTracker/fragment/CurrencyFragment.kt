@@ -10,11 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.omidzamani.creptocoin.R
-import com.omidzamani.creptocoin.adapter.CurrencyAdapter
-import com.omidzamani.creptocoin.interfaces.CustomCurrencyListener
-import com.omidzamani.creptocoin.model.Currency
-import com.omidzamani.creptocoin.utils.SharedPreference
+import com.omidzamani.coinTracker.R
+import com.omidzamani.coinTracker.adapter.CurrencyAdapter
+import com.omidzamani.coinTracker.interfaces.CustomCurrencyListener
+import com.omidzamani.coinTracker.model.Currency
+import com.omidzamani.coinTracker.utils.SharedPreference
 import kotlinx.android.synthetic.main.fragment_currency.*
 import kotlinx.android.synthetic.main.fragment_currency.view.*
 import okhttp3.Call

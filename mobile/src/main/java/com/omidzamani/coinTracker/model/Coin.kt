@@ -30,7 +30,7 @@ class Coin
 constructor(item: JSONObject) {
     var coinName: String? = null
         private set
-    var coinPrice: String? = null
+    var coinPrice: Double? = null
         private set
     var coinPercent: String? = null
         private set
@@ -46,7 +46,7 @@ constructor(item: JSONObject) {
 
         coinName = item.getString("name")
         coinPercent = item.getString("percent_change_1h")
-        coinPrice = item.getString("price_usd")
+        coinPrice = item.getDouble("price_usd")
         coinSymbol = item.getString("symbol")
         coinPercent7d = item.getString("percent_change_7d")
         coinPercent24h = item.getString("percent_change_24h")

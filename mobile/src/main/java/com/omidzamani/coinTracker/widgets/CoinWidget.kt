@@ -94,7 +94,7 @@ class CoinWidget : AppWidgetProvider() {
             setButtonListener(context, views, appWidgetId)
             for (i in 0 until list.size) {
                 views.setTextViewText(getCoinViewId(i), list[i].coinSymbol.plus(", ").plus(list[i].coinName))
-                views.setTextViewText(getCoinPriceViewId(i), "$".plus(list[i].coinPrice))
+                views.setTextViewText(getCoinPriceViewId(i), "$".plus(String.format("%.2f",list[i].coinPrice)))
 
                 if (java.lang.Float.parseFloat(list[i].coinPercent.toString()) >= 0.0) {
                     views.setTextViewText(getCoinPercentViewId(i), "+".plus(list[i].coinPercent))

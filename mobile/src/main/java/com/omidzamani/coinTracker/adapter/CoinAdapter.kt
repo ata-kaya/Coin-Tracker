@@ -44,7 +44,7 @@ class CoinAdapter constructor(private val listener: CustomCoinsListener,
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = items[position]
         holder.title.text = item.coinName.plus(", ").plus(item.coinSymbol)
-        holder.dollar.text = item.coinPrice.plus(" $")
+        holder.dollar.text = String.format("%.2f", item.coinPrice).plus(" $")
         holder.btc.text = item.coinPriceBTC.plus(" BTC")
         holder.percent.text = item.coinPercent.plus("%")
         if (java.lang.Float.parseFloat(item.coinPercent) >= 0.0)

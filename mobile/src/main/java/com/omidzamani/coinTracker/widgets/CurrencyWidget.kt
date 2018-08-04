@@ -93,17 +93,16 @@ class CurrencyWidget : AppWidgetProvider() {
 
 
             setButtonListener(context, views, appWidgetId)
-            val currencyFormatter = DecimalFormat("#.##")
             for (i in 0 until list.size) {
                 views.setTextViewText(getCurrencyNameViewId(i), list[i].currencySymbol)
-                views.setTextViewText(getCurrencySellPriceViewId(i), ": ".plus(currencyFormatter.format(list[i].currencyPriceSell).plus("₺")))
+                views.setTextViewText(getCurrencySellPriceViewId(i), ": ".plus(String.format("%.2f", list[i].currencyPriceSell).plus("₺")))
 //                views.setTextViewText(getCurrencyBuyPriceViewId(i), context.getString(R.string.buy).plus(currencyFormatter.format(list[i].currencyPriceBuy).plus("₺")))
 
                 if (list[i].currencyPercent!! >= 0.0) {
-                    views.setTextViewText(getCurrencyPercentViewId(i), "+".plus(currencyFormatter.format(list[i].currencyPercent)))
+                    views.setTextViewText(getCurrencyPercentViewId(i), "+".plus(String.format("%.2f", list[i].currencyPercent)))
                     views.setTextColor(getCurrencyPercentViewId(i), ContextCompat.getColor(context, android.R.color.holo_green_light))
                 } else {
-                    views.setTextViewText(getCurrencyPercentViewId(i), currencyFormatter.format(list[i].currencyPercent))
+                    views.setTextViewText(getCurrencyPercentViewId(i), String.format("%.2f", list[i].currencyPercent))
                     views.setTextColor(getCurrencyPercentViewId(i), ContextCompat.getColor(context, R.color.red))
                 }
             }

@@ -8,11 +8,11 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import android.widget.Toast
-import com.omidzamani.creptocoin.R
-import com.omidzamani.creptocoin.adapter.CoinAdapter
-import com.omidzamani.creptocoin.interfaces.CustomCoinsListener
-import com.omidzamani.creptocoin.model.Coin
-import com.omidzamani.creptocoin.utils.SharedPreference
+import com.omidzamani.coinTracker.R
+import com.omidzamani.coinTracker.adapter.CoinAdapter
+import com.omidzamani.coinTracker.interfaces.CustomCoinsListener
+import com.omidzamani.coinTracker.model.Coin
+import com.omidzamani.coinTracker.utils.SharedPreference
 import kotlinx.android.synthetic.main.fragment_coin.*
 import kotlinx.android.synthetic.main.fragment_coin.view.*
 import okhttp3.Call

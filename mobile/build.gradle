@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
+    flavorDimensions "default"
     defaultConfig {
         applicationId "com.omidzamani.creptocoin"
         minSdkVersion 21
@@ -18,6 +19,20 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        demo {
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+            resValue("string", "currency_api","https://www.doviz.com/api/v1/currencies/all/latest")
+            resValue("string", "coin_api","https://api.coinmarketcap.com/v1/ticker")
+        }
+
+        store {
+            resValue("string", "currency_api","https://www.doviz.com/api/v1/currencies/all/latest")
+            resValue("string", "coin_api","https://api.coinmarketcap.com/v1/ticker")
         }
     }
 }

@@ -11,4 +11,6 @@
     <string name="sell">Satış:&#160;</string>
     <string name="buy">Alış:&#160;</string>
     <string name="currency_widget_title">Döviz Piyasası</string>
+    <string name="coin_title">Coin wigdet</string>
+    <string name="currency_title">Currency Widget</string>
 </resources>

@@ -28,7 +28,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".widgets.CoinWidget">
+        <receiver android:name=".widgets.CoinWidget"
+            android:label="@string/coin_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
@@ -37,7 +38,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/coin_widget_info"/>
         </receiver>
-        <receiver android:name=".widgets.CurrencyWidget">
+        <receiver android:name=".widgets.CurrencyWidget"
+            android:label="@string/currency_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>

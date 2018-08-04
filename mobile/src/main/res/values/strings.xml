@@ -14,4 +14,6 @@
     <string name="buy">Buy:&#160;</string>
     <string name="configure">Configure</string>
     <string name="currency_widget_title">Currency Table</string>
+    <string name="coin_title">Coin wigdet</string>
+    <string name="currency_title">Currency Widget</string>
 </resources>

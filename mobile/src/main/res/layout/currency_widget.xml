@@ -42,7 +42,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:contentDescription="@string/appwidget_text"
-                    android:text="@string/appwidget_text"
                     android:textColor="#ffffff"
                     android:textSize="14sp"/>
 
@@ -55,7 +54,6 @@
                     android:layout_marginStart="12dp"
                     android:layout_toStartOf="@id/appwidget_percent_1"
                     android:contentDescription="@string/appwidget_text"
-                    android:text="@string/appwidget_text"
                     android:textColor="#ffffff"
                     android:textSize="14sp"/>
 
@@ -90,7 +88,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/appwidget_text"
-                    android:text="@string/appwidget_text"
                     android:textColor="#ffffff"
                     android:textSize="14sp"/>
 
@@ -103,7 +100,6 @@
                     android:layout_marginStart="12dp"
                     android:contentDescription="@string/appwidget_text"
                     android:layout_alignBaseline="@id/appwidget_text_2"
-                    android:text="@string/appwidget_text"
                     android:textColor="#ffffff"
                     android:textSize="14sp"/>
 
@@ -116,7 +112,6 @@
                     android:layout_alignParentEnd="true"
                     android:gravity="center"
                     android:layout_alignBaseline="@+id/appwidget_sell_2"
-                    android:text="sdfsd"
                     android:textSize="14sp"/>
 
             </RelativeLayout>
@@ -141,7 +136,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:contentDescription="@string/appwidget_text"
-                    android:text="@string/appwidget_text"
                     android:textColor="#ffffff"
                     android:textSize="14sp"/>
 
@@ -154,7 +148,6 @@
                     android:layout_toStartOf="@+id/appwidget_percent_3"
                     android:layout_marginStart="12dp"
                     android:contentDescription="@string/appwidget_text"
-                    android:text="@string/appwidget_text"
                     android:textColor="#ffffff"
                     android:textSize="14sp"/>
 
@@ -166,7 +159,6 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignBaseline="@+id/appwidget_sell_3"
                     android:gravity="center"
-                    android:text="sdfsd"
                     android:textSize="14sp"/>
 
             </RelativeLayout>
@@ -193,7 +185,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:contentDescription="@string/appwidget_text"
-                    android:text="@string/appwidget_text"
                     android:textColor="#ffffff"
                     android:textSize="14sp"/>
 
@@ -206,7 +197,6 @@
                     android:layout_marginStart="12dp"
                     android:layout_alignBaseline="@id/appwidget_text_4"
                     android:contentDescription="@string/appwidget_text"
-                    android:text="@string/appwidget_text"
                     android:textColor="#ffffff"
                     android:textSize="14sp"/>
 
@@ -218,7 +208,6 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignBaseline="@id/appwidget_sell_4"
                     android:gravity="center"
-                    android:text="sdfsd"
                     android:textSize="14sp"/>
 
             </RelativeLayout>

@@ -30,18 +30,16 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BitCoin,BTC"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/percent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12%"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorAccent"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
@@ -52,17 +50,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12033360$"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:id="@+id/dolar"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0.00003BTC"
                 android:textAlignment="textEnd"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:id="@+id/btc"/>
 

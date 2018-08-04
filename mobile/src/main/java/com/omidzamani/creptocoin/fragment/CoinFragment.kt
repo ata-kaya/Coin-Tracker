@@ -125,11 +125,11 @@ class CoinFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, CustomCoi
                     (0 until array.length()).mapTo(list) {
                         Coin(array.optJSONObject(it))
                     }
-                    Handler(Looper.getMainLooper()).post({
+                    Handler(Looper.getMainLooper()).post {
                         swipe_refresh_layout.isRefreshing = false
                         coin_list.adapter = CoinAdapter(this@CoinFragment, context, list, isEditMode)
                         coin_list.layoutManager = LinearLayoutManager(context)
-                    })
+                    }
                 }
 
             }

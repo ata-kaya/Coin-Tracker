@@ -63,11 +63,11 @@ class CurrencyFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, Custo
                     (0 until array.length()).mapTo(list) {
                         Currency(array.optJSONObject(it))
                     }
-                    Handler(Looper.getMainLooper()).post({
+                    Handler(Looper.getMainLooper()).post {
                         swipe_refresh_layout.isRefreshing = false
                         currency_list.adapter = CurrencyAdapter(this@CurrencyFragment, context, list, isEditMode)
                         currency_list.layoutManager = LinearLayoutManager(context)
-                    })
+                    }
                 }
 
             }
@@ -77,7 +77,7 @@ class CurrencyFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, Custo
 
 
     override fun onRefresh() {
-
+        api(false)
     }
 
     override fun onCurrencyAddOrRemove() {

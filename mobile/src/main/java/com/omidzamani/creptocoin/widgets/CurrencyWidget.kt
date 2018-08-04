@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.widget.RemoteViews
 
@@ -47,6 +48,7 @@ class CurrencyWidget : AppWidgetProvider() {
 
             val views = RemoteViews(context.packageName, R.layout.currency_widget)
             views.setTextViewText(R.id.btn1, "Refreshing")
+            views.setInt(R.id.btn1,"setBackgroundResource",R.color.black_transparent)
             appWidgetManager.updateAppWidget(appWidgetId, views)
             getPrices(context, object : Callback {
                 override fun onResponse(call: Call?, response: Response) {
@@ -68,6 +70,7 @@ class CurrencyWidget : AppWidgetProvider() {
                             ArrayList(list.subList(0, 4))
                         }
                         views.setTextViewText(R.id.btn1, "")
+                        views.setInt(R.id.btn1,"setBackgroundResource",android.R.color.transparent)
                         reRenderWidget(context, views, appWidgetManager, appWidgetId, list)
                     }
                 }
@@ -97,15 +100,15 @@ class CurrencyWidget : AppWidgetProvider() {
             val currencyFormatter = DecimalFormat("#.##")
             for (i in 0 until list.size) {
                 views.setTextViewText(getCurrencyNameViewId(i), list[i].currencySymbol)
-                views.setTextViewText(getCurrencySellPriceViewId(i), context.getString(R.string.sell).plus(currencyFormatter.format(list[i].currencyPriceSell).plus("₺")))
-                views.setTextViewText(getCurrencyBuyPriceViewId(i), context.getString(R.string.buy).plus(currencyFormatter.format(list[i].currencyPriceBuy).plus("₺")))
+                views.setTextViewText(getCurrencySellPriceViewId(i), ": ".plus(currencyFormatter.format(list[i].currencyPriceSell).plus("₺")))
+//                views.setTextViewText(getCurrencyBuyPriceViewId(i), context.getString(R.string.buy).plus(currencyFormatter.format(list[i].currencyPriceBuy).plus("₺")))
 
                 if (list[i].currencyPercent!! >= 0.0) {
-                    views.setTextViewText(getcurrencyPercentViewId(i), "+".plus(currencyFormatter.format(list[i].currencyPercent)))
-                    views.setTextColor(getcurrencyPercentViewId(i), Color.GREEN)
+                    views.setTextViewText(getCurrencyPercentViewId(i), "+".plus(currencyFormatter.format(list[i].currencyPercent)))
+                    views.setTextColor(getCurrencyPercentViewId(i), ContextCompat.getColor(context, android.R.color.holo_green_light))
                 } else {
-                    views.setTextViewText(getcurrencyPercentViewId(i), currencyFormatter.format(list[i].currencyPercent))
-                    views.setTextColor(getcurrencyPercentViewId(i), Color.RED)
+                    views.setTextViewText(getCurrencyPercentViewId(i), currencyFormatter.format(list[i].currencyPercent))
+                    views.setTextColor(getCurrencyPercentViewId(i), ContextCompat.getColor(context, R.color.red))
                 }
             }
 
@@ -148,7 +151,7 @@ class CurrencyWidget : AppWidgetProvider() {
             return ids[index]
         }
 
-        private fun getcurrencyPercentViewId(index: Int): Int {
+        private fun getCurrencyPercentViewId(index: Int): Int {
             val ids: IntArray = intArrayOf(
                     R.id.appwidget_percent_1,
                     R.id.appwidget_percent_2,

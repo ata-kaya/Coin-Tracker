@@ -2,6 +2,7 @@ package com.omidzamani.creptocoin.adapter
 
 import android.content.Context
 import android.graphics.Color
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -49,9 +50,9 @@ class CurrencyAdapter constructor(private val listener: CustomCurrencyListener,
         holder.buy.text = context.getString(R.string.buy).plus(currencyFormat.format(item.currencyPriceBuy).plus("₺"))
         holder.percent.text = currencyFormat.format(item.currencyPercent).plus("%")
         if (item.currencyPercent!! >= 0.0)
-            holder.percent.setTextColor(Color.GREEN)
+            holder.percent.setTextColor(ContextCompat.getColor(context, R.color.green))
         else
-            holder.percent.setTextColor(Color.RED)
+            holder.percent.setTextColor(ContextCompat.getColor(context, R.color.red))
 
         if (isEditMode) {
             holder.checkBox.visibility = View.VISIBLE

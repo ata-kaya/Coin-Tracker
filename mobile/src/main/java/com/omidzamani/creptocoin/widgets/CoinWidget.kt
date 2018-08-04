@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.widget.RemoteViews
 import com.omidzamani.creptocoin.BuildConfig
@@ -117,10 +118,10 @@ class CoinWidget : AppWidgetProvider() {
 
                 if (java.lang.Float.parseFloat(list[i].coinPercent.toString()) >= 0.0) {
                     views.setTextViewText(getCoinPercentViewId(i), "+".plus(list[i].coinPercent))
-                    views.setTextColor(getCoinPercentViewId(i), Color.GREEN)
+                    views.setTextColor(getCoinPercentViewId(i), ContextCompat.getColor(context, R.color.green))
                 } else {
                     views.setTextViewText(getCoinPercentViewId(i), list[i].coinPercent)
-                    views.setTextColor(getCoinPercentViewId(i), Color.RED)
+                    views.setTextColor(getCoinPercentViewId(i), ContextCompat.getColor(context, R.color.red))
                 }
             }
 

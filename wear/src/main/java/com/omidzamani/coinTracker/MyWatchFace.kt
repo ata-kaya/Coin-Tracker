@@ -1,4 +1,4 @@
-package com.omidzamani.creptocoin
+package com.omidzamani.coinTracker
 
 import android.content.BroadcastReceiver
 import android.content.Context

@@ -1,19 +1,16 @@
-package com.omidzamani.creptocoin.widgets
+package com.omidzamani.coinTracker.widgets
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.support.v4.content.ContextCompat
-import android.util.Log
 import android.widget.RemoteViews
-import com.omidzamani.creptocoin.BuildConfig
-import com.omidzamani.creptocoin.R
-import com.omidzamani.creptocoin.R.id.btn
-import com.omidzamani.creptocoin.model.Coin
-import com.omidzamani.creptocoin.utils.SharedPreference
+import com.omidzamani.coinTracker.R
+import com.omidzamani.coinTracker.R.id.btn
+import com.omidzamani.coinTracker.model.Coin
+import com.omidzamani.coinTracker.utils.SharedPreference
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
@@ -28,7 +25,6 @@ class CoinWidget : AppWidgetProvider() {
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
-        Log.d("OMID", "coin ids="+appWidgetId)
             updateAppWidget(context, appWidgetManager, appWidgetIds)
         }
     }
@@ -39,21 +35,6 @@ class CoinWidget : AppWidgetProvider() {
 
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
-    }
-
-    override fun onReceive(context: Context?, intent: Intent?) {
-        if (intent!!.hasExtra("widgetName") && intent.getStringExtra("widgetName").equals("omid")) {
-            val dd =intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS)
-            Log.d("omid","this is onrecieve="+dd[0])
-            if (dd.size > 1)
-                Log.d("omid","this is onrecieve="+ dd[1])
-        } else if (intent!!.hasExtra("widgetName") && intent.getStringExtra("widgetName").equals("omid2")) {
-            val dd = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS)
-            Log.d("omid","this is onrecieve2="+dd[0])
-            if (dd.size > 1)
-                Log.d("omid","this is onrecieve2="+dd[1])
-        } else
-            super.onReceive(context, intent)
     }
 
 
@@ -101,7 +82,6 @@ class CoinWidget : AppWidgetProvider() {
             val intent = Intent(context, CoinWidget::class.java)
             intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetId)
-            intent.putExtra("widgetName","omid2")
             val pendingIntent = PendingIntent.getBroadcast(context,
                     0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
             views.setOnClickPendingIntent(R.id.btn, pendingIntent)

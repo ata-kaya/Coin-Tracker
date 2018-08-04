@@ -8,7 +8,7 @@ android {
     compileSdkVersion 26
     flavorDimensions "default"
     defaultConfig {
-        applicationId "com.omidzamani.creptocoin"
+        applicationId "com.omidzamani.cointracker"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1

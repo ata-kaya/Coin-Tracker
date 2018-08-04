@@ -1,8 +1,8 @@
-package com.omidzamani.creptocoin.utils
+package com.omidzamani.coinTracker.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.omidzamani.creptocoin.model.Coin
+import com.omidzamani.coinTracker.model.Coin
 
 /**
  * Created by omidzamani on 15.07.2018.

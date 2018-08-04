@@ -1,4 +1,4 @@
-package com.omidzamani.creptocoin.model
+package com.omidzamani.coinTracker.model
 
 import org.json.JSONException
 import org.json.JSONObject

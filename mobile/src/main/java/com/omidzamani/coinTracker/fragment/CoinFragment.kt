@@ -1,4 +1,4 @@
-package com.omidzamani.creptocoin.fragment
+package com.omidzamani.coinTracker.fragment
 
 import android.os.Bundle
 import android.os.Handler

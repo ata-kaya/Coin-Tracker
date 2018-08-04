@@ -1,4 +1,4 @@
-package com.omidzamani.creptocoin.interfaces
+package com.omidzamani.coinTracker.interfaces
 
 /**
  * Created by omidzamani on 22.07.2018.

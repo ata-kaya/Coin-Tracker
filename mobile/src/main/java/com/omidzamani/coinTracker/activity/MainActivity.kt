@@ -1,4 +1,4 @@
-package com.omidzamani.creptocoin.activity
+package com.omidzamani.coinTracker.activity
 
 import android.support.design.widget.TabLayout
 import android.support.design.widget.Snackbar
@@ -10,10 +10,10 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.omidzamani.creptocoin.fragment.CoinFragment
+import com.omidzamani.coinTracker.fragment.CoinFragment
 
-import com.omidzamani.creptocoin.R
-import com.omidzamani.creptocoin.fragment.CurrencyFragment
+import com.omidzamani.coinTracker.R
+import com.omidzamani.coinTracker.fragment.CurrencyFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

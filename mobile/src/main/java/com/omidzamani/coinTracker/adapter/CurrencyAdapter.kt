@@ -1,4 +1,4 @@
-package com.omidzamani.creptocoin.adapter
+package com.omidzamani.coinTracker.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -9,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
-import com.omidzamani.creptocoin.R
+import com.omidzamani.coinTracker.R
 import kotlinx.android.synthetic.main.currency_list.view.*
 import android.widget.Toast
-import com.omidzamani.creptocoin.interfaces.CustomCurrencyListener
-import com.omidzamani.creptocoin.model.Currency
-import com.omidzamani.creptocoin.utils.SharedPreference
+import com.omidzamani.coinTracker.interfaces.CustomCurrencyListener
+import com.omidzamani.coinTracker.model.Currency
+import com.omidzamani.coinTracker.utils.SharedPreference
 import java.text.DecimalFormat
 import java.util.*
 

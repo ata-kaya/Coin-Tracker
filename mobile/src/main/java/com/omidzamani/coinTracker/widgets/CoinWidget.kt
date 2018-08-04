@@ -63,7 +63,7 @@ class CoinWidget : AppWidgetProvider() {
                                 tempList.addAll(list.filter { coin -> coin.coinSymbol == coins[i] })
                             tempList
                         } else {
-                            ArrayList(list.subList(0, 6))
+                            ArrayList(list.subList(0, 4))
                         }
                         views.setTextViewText(btn, "")
                         reRenderWidget(context, views, appWidgetManager, appWidgetId, list)
@@ -97,10 +97,10 @@ class CoinWidget : AppWidgetProvider() {
                 views.setTextViewText(getCoinPriceViewId(i), "$".plus(String.format("%.2f",list[i].coinPrice)))
 
                 if (java.lang.Float.parseFloat(list[i].coinPercent.toString()) >= 0.0) {
-                    views.setTextViewText(getCoinPercentViewId(i), "+".plus(list[i].coinPercent))
-                    views.setTextColor(getCoinPercentViewId(i), ContextCompat.getColor(context, R.color.green))
+                    views.setTextViewText(getCoinPercentViewId(i), "+".plus(list[i].coinPercent).plus("%"))
+                    views.setTextColor(getCoinPercentViewId(i), ContextCompat.getColor(context, android.R.color.holo_green_light))
                 } else {
-                    views.setTextViewText(getCoinPercentViewId(i), list[i].coinPercent)
+                    views.setTextViewText(getCoinPercentViewId(i), list[i].coinPercent.plus("%"))
                     views.setTextColor(getCoinPercentViewId(i), ContextCompat.getColor(context, R.color.red))
                 }
             }
@@ -118,9 +118,7 @@ class CoinWidget : AppWidgetProvider() {
                     R.id.appwidget_text1,
                     R.id.appwidget_text2,
                     R.id.appwidget_text3,
-                    R.id.appwidget_text4,
-                    R.id.appwidget_text5,
-                    R.id.appwidget_text6
+                    R.id.appwidget_text4
             )
 
             return ids[index]
@@ -131,9 +129,7 @@ class CoinWidget : AppWidgetProvider() {
                     R.id.appwidget_price1,
                     R.id.appwidget_price2,
                     R.id.appwidget_price3,
-                    R.id.appwidget_price4,
-                    R.id.appwidget_price5,
-                    R.id.appwidget_price6
+                    R.id.appwidget_price4
             )
 
             return ids[index]
@@ -144,9 +140,7 @@ class CoinWidget : AppWidgetProvider() {
                     R.id.appwidget_text_1,
                     R.id.appwidget_text_2,
                     R.id.appwidget_text_3,
-                    R.id.appwidget_text_4,
-                    R.id.appwidget_text_5,
-                    R.id.appwidget_text_6
+                    R.id.appwidget_text_4
             )
 
             return ids[index]

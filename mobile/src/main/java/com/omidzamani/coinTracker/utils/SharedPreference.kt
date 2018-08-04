@@ -29,7 +29,7 @@ class SharedPreference private constructor(context: Context){
 
 
     fun canAddCustomCoin() : Boolean {
-        return temp_coins.size < 6
+        return temp_coins.size < 4
     }
 
 

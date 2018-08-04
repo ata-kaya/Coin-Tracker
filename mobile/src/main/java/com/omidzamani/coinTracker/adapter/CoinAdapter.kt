@@ -59,7 +59,7 @@ class CoinAdapter constructor(private val listener: CustomCoinsListener,
                 if (isChecked) {
                     if (!SharedPreference.getInstance(context).canAddCustomCoin()) {
                         buttonView.isChecked = false
-                        Toast.makeText(context, "Limit is 6 coins", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Limit is 4 coins", Toast.LENGTH_LONG).show()
                     } else {
                         SharedPreference.getInstance(context).addCoin(item.coinSymbol as String)
                     }

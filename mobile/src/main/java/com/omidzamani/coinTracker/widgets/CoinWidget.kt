@@ -45,6 +45,7 @@ class CoinWidget : AppWidgetProvider() {
 
             val views = RemoteViews(context.packageName, R.layout.coin_widget)
             views.setTextViewText(R.id.btn, "Refreshing")
+            views.setInt(R.id.btn,"setBackgroundResource",R.color.black_transparent)
             appWidgetManager.updateAppWidget(appWidgetId, views)
             getPrices(context, object : Callback {
                 override fun onResponse(call: Call?, response: Response) {
@@ -66,6 +67,7 @@ class CoinWidget : AppWidgetProvider() {
                             ArrayList(list.subList(0, 4))
                         }
                         views.setTextViewText(btn, "")
+                        views.setInt(R.id.btn,"setBackgroundResource", android.R.color.transparent)
                         reRenderWidget(context, views, appWidgetManager, appWidgetId, list)
                     }
                 }

@@ -235,7 +235,8 @@
         android:id="@+id/btn"
         android:clickable="true"
         android:focusable="true"
-        android:textSize="30sp"
+        android:textSize="20sp"
+        android:textColor="@color/red"
         android:background="@android:color/transparent"
         android:layout_alignBottom="@+id/main_layout"/>
 

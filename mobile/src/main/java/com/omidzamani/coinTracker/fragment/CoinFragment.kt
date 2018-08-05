@@ -37,13 +37,14 @@ class CoinFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, CustomCoi
         rootView.swipe_refresh_layout.setOnRefreshListener(this)
         api(false)
         rootView.add_button.setOnClickListener{
-            if (pref.temp_coins.size == 6){
+            if (!pref.canAddCustomCoin()){
                 pref.addCoins()
                 api(false)
             } else {
-                Toast.makeText(context,"You should select 6 coin", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"You should select 4 coin", Toast.LENGTH_LONG).show()
             }
         }
+        setHasOptionsMenu(true)
         return rootView
     }
 
@@ -70,16 +71,13 @@ class CoinFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, CustomCoi
 
 
 
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        super.onCreateOptionsMenu(menu)
-//        val menuInflater : MenuInflater = menuInflater
-//        menuInflater.inflate(R.menu.main, menu)
-//        return true
-//    }
+    override fun onCreateOptionsMenu(menu: Menu?, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.main, menu)
+    }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item!!.itemId == R.id.edit_menu) {
-//            api(true)
+            api(true)
 //            startActivity(Intent(this, MainActivity::class.java))
         } else if (item.itemId == R.id.delete_manu) {
             SharedPreference.getInstance(context).deleteAllCoins()
@@ -93,7 +91,7 @@ class CoinFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, CustomCoi
 
 
     override fun onCoinAddOrRemove() {
-        if (pref.temp_coins.size == 6){
+        if (pref.tempCoins.size == 6){
             setButtonActive(true)
         } else {
             setButtonActive(false)

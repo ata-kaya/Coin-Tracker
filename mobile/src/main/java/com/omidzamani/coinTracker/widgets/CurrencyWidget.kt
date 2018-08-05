@@ -7,16 +7,15 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.content.ContextCompat
 import android.widget.RemoteViews
-
 import com.omidzamani.coinTracker.R
 import com.omidzamani.coinTracker.model.Currency
+import com.omidzamani.coinTracker.utils.CURRENCY_ALLOWED_SIZE
 import com.omidzamani.coinTracker.utils.SharedPreference
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
 import org.json.JSONArray
 import java.io.IOException
-import java.text.DecimalFormat
 
 /**
  * Implementation of App Widget functionality.
@@ -44,8 +43,8 @@ class CurrencyWidget : AppWidgetProvider() {
                                      appWidgetId: IntArray) {
 
             val views = RemoteViews(context.packageName, R.layout.currency_widget)
-            views.setTextViewText(R.id.btn1, "Refreshing")
-            views.setInt(R.id.btn1,"setBackgroundResource",R.color.black_transparent)
+            views.setTextViewText(R.id.btn1, context.getString(R.string.refreshing))
+            views.setInt(R.id.btn1, "setBackgroundResource", R.color.black_transparent)
             appWidgetManager.updateAppWidget(appWidgetId, views)
             getPrices(context, object : Callback {
                 override fun onResponse(call: Call?, response: Response) {
@@ -59,15 +58,15 @@ class CurrencyWidget : AppWidgetProvider() {
                                 }
                         val tempList: ArrayList<Currency> = ArrayList()
                         list = if (SharedPreference.getInstance(context).hasCustomCurrency()) {
-                            val coins: ArrayList<String> = SharedPreference.getInstance(context).getCustomCoins()
-                            for (i in 0 until coins.size)
-                                tempList.addAll(list.filter { coin -> coin.currencySymbol == coins[i] })
+                            val currencies: ArrayList<String> = SharedPreference.getInstance(context).getCustomCurrencies()
+                            for (i in 0 until currencies.size)
+                                tempList.addAll(list.filter { currency -> currency.currencySymbol == currencies[i] })
                             tempList
                         } else {
-                            ArrayList(list.subList(0, 4))
+                            ArrayList(list.subList(0, CURRENCY_ALLOWED_SIZE))
                         }
                         views.setTextViewText(R.id.btn1, "")
-                        views.setInt(R.id.btn1,"setBackgroundResource",android.R.color.transparent)
+                        views.setInt(R.id.btn1, "setBackgroundResource", android.R.color.transparent)
                         reRenderWidget(context, views, appWidgetManager, appWidgetId, list)
                     }
                 }

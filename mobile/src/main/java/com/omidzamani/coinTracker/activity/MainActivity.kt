@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     /**
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -56,8 +55,8 @@ class MainActivity : AppCompatActivity() {
 
         override fun getItem(position: Int): Fragment {
             if (position == 0)
-                return CoinFragment.newInstance(position + 1)
-            return CurrencyFragment.newInstance(position + 1)
+                return CoinFragment.newInstance()
+            return CurrencyFragment.newInstance()
         }
 
         override fun getCount(): Int {

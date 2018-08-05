@@ -6,19 +6,19 @@ import org.json.JSONObject
 /**
  * Created by omidzamani on 15.07.2018.
  *
- * this is my coin model
+ * this is my currency model
  */
 class Currency
-        /*
-     "selling": 5.6668,
-        "update_date": 1532725193,
-        "currency": 2,
-        "buying": 5.651,
-        "change_rate": -0.093439819467218,
-        "name": "euro",
-        "full_name": "Euro",
-        "code": "EUR"
-     */
+/*
+"selling": 5.6668,
+"update_date": 1532725193,
+"currency": 2,
+"buying": 5.651,
+"change_rate": -0.093439819467218,
+"name": "euro",
+"full_name": "Euro",
+"code": "EUR"
+*/
 @Throws(JSONException::class)
 constructor(item: JSONObject) {
     var currencyFullName: String? = null

@@ -1,7 +1,6 @@
 package com.omidzamani.coinTracker.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -14,8 +13,8 @@ import kotlinx.android.synthetic.main.currency_list.view.*
 import android.widget.Toast
 import com.omidzamani.coinTracker.interfaces.CustomCurrencyListener
 import com.omidzamani.coinTracker.model.Currency
+import com.omidzamani.coinTracker.utils.CURRENCY_ALLOWED_SIZE
 import com.omidzamani.coinTracker.utils.SharedPreference
-import java.text.DecimalFormat
 import java.util.*
 
 
@@ -30,13 +29,10 @@ class CurrencyAdapter constructor(private val listener: CustomCurrencyListener,
     : RecyclerView.Adapter<CurrencyAdapter.MyViewHolder>() {
 
 
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView: View =
-            LayoutInflater.from(parent.context)
-                    .inflate(R.layout.currency_list, parent, false)
+                LayoutInflater.from(parent.context)
+                        .inflate(R.layout.currency_list, parent, false)
 
         return MyViewHolder(itemView)
 
@@ -55,17 +51,17 @@ class CurrencyAdapter constructor(private val listener: CustomCurrencyListener,
 
         if (isEditMode) {
             holder.checkBox.visibility = View.VISIBLE
-            holder.checkBox.isChecked = SharedPreference.getInstance(context).getCustomCoins().contains(item.currencySymbol)
+            holder.checkBox.isChecked = SharedPreference.getInstance(context).getCustomCurrencies().contains(item.currencySymbol)
             holder.checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
-                    if (!SharedPreference.getInstance(context).canAddCustomCoin()) {
+                    if (!SharedPreference.getInstance(context).canAddCustomCurrency()) {
                         buttonView.isChecked = false
-                        Toast.makeText(context, "Limit is 4 coins", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, String.format(context.getString(R.string.toast_message_currency_limit), CURRENCY_ALLOWED_SIZE), Toast.LENGTH_LONG).show()
                     } else {
-                        SharedPreference.getInstance(context).addCoin(item.currencySymbol as String)
+                        SharedPreference.getInstance(context).addCurrency(item.currencySymbol as String)
                     }
                 } else {
-                    SharedPreference.getInstance(context).deleteCoin(item.currencySymbol as String)
+                    SharedPreference.getInstance(context).deleteCurrency(item.currencySymbol as String)
                 }
                 listener.onCurrencyAddOrRemove()
             }

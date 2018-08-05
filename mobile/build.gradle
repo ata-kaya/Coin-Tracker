@@ -41,13 +41,13 @@ android {
         demo {
             applicationIdSuffix ".demo"
             versionNameSuffix "-demo"
-            resValue("string", "currency_api","https://www.doviz.com/api/v1/currencies/all/latest")
-            resValue("string", "coin_api","https://api.coinmarketcap.com/v1/ticker")
+            resValue("string", "currency_api", "https://www.doviz.com/api/v1/currencies/all/latest")
+            resValue("string", "coin_api", "https://api.coinmarketcap.com/v1/ticker")
         }
 
         store {
-            resValue("string", "currency_api","https://www.doviz.com/api/v1/currencies/all/latest")
-            resValue("string", "coin_api","https://api.coinmarketcap.com/v1/ticker")
+            resValue("string", "currency_api", "https://www.doviz.com/api/v1/currencies/all/latest")
+            resValue("string", "coin_api", "https://api.coinmarketcap.com/v1/ticker")
         }
     }
 }

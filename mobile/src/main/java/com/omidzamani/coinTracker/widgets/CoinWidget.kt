@@ -44,8 +44,8 @@ class CoinWidget : AppWidgetProvider() {
                                      appWidgetId: IntArray) {
 
             val views = RemoteViews(context.packageName, R.layout.coin_widget)
-            views.setTextViewText(R.id.btn, "Refreshing")
-            views.setInt(R.id.btn,"setBackgroundResource",R.color.black_transparent)
+            views.setTextViewText(R.id.btn, context.getString(R.string.refreshing))
+            views.setInt(R.id.btn, "setBackgroundResource", R.color.black_transparent)
             appWidgetManager.updateAppWidget(appWidgetId, views)
             getPrices(context, object : Callback {
                 override fun onResponse(call: Call?, response: Response) {
@@ -67,7 +67,7 @@ class CoinWidget : AppWidgetProvider() {
                             ArrayList(list.subList(0, 4))
                         }
                         views.setTextViewText(btn, "")
-                        views.setInt(R.id.btn,"setBackgroundResource", android.R.color.transparent)
+                        views.setInt(R.id.btn, "setBackgroundResource", android.R.color.transparent)
                         reRenderWidget(context, views, appWidgetManager, appWidgetId, list)
                     }
                 }
@@ -96,7 +96,7 @@ class CoinWidget : AppWidgetProvider() {
             setButtonListener(context, views, appWidgetId)
             for (i in 0 until list.size) {
                 views.setTextViewText(getCoinViewId(i), list[i].coinSymbol.plus(", ").plus(list[i].coinName))
-                views.setTextViewText(getCoinPriceViewId(i), "$".plus(String.format("%.2f",list[i].coinPrice)))
+                views.setTextViewText(getCoinPriceViewId(i), "$".plus(String.format("%.2f", list[i].coinPrice)))
 
                 if (java.lang.Float.parseFloat(list[i].coinPercent.toString()) >= 0.0) {
                     views.setTextViewText(getCoinPercentViewId(i), "+".plus(list[i].coinPercent).plus("%"))

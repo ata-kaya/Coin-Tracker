@@ -5,15 +5,19 @@
     <string name="appwidget_title">Crypto Coin Price Table</string>
     <string name="edit">Edit</string>
     <string name="delete">reset</string>
-    <string name="title_activity_main2">Main2Activity</string>
     <string name="tab_text_1">Coin Market</string>
     <string name="tab_text_2">Currency</string>
     <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
     <string name="sell">Sell:&#160;</string>
     <string name="buy">Buy:&#160;</string>
-    <string name="configure">Configure</string>
     <string name="currency_widget_title">Currency Table</string>
     <string name="coin_title">Coin wigdet</string>
     <string name="currency_title">Currency Widget</string>
+    <string name="toast_message_1">You should select %s currency</string>
+    <string name="toast_message_coin_limit">Limit is %s coins</string>
+    <string name="toast_message_2">You should select %s coin</string>
+    <string name="toast_message_currency_limit">Limit is %s currency</string>
+    <string name="add_currencies">Add Currencies</string>
+    <string name="add_coins">Add Coins</string>
+    <string name="refreshing">Refreshing</string>
 </resources>

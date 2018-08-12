@@ -1,4 +1,4 @@
-package com.omidzamani.creptocoin
+package com.omidzamani.coinTracker
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

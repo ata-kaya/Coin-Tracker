@@ -4,29 +4,68 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'io.fabric'
+
+
 android {
     compileSdkVersion 26
+    flavorDimensions "default"
     defaultConfig {
-        applicationId "com.omidzamani.creptocoin"
+        applicationId "com.omidzamani.cointracker"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [APIKey:fabric_key]
+    }
+    signingConfigs {
+        release {
+            if (project.hasProperty('key')) {
+                storeFile file(key)
+                storePassword store_password
+                keyAlias key_alias
+                keyPassword key_password
+            }
+        }
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        disable 'MissingTranslation'
+    }
+
+    productFlavors {
+        demo {
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+            resValue "string", "app_name", '"Coin Tracker Demo"'
+            buildConfigField "String", "currency_api",  '"https://www.doviz.com/api/v1/currencies/all/latest"'
+            buildConfigField "String", "coin_api", '"https://api.coinmarketcap.com/v1/ticker"'
+        }
+
+        store {
+            resValue "string", "app_name", '"Coin Tracker"'
+            buildConfigField("String", "currency_api", '"https://www.doviz.com/api/v1/currencies/all/latest"')
+            buildConfigField("String", "coin_api", '"https://api.coinmarketcap.com/v1/ticker"')
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation "org.jetbrains.anko:anko:0.10.5"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -34,10 +73,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile ('io.socket:socket.io-client:1.0.0') {
-        // excluding org.json which is provided by Android
-        exclude group: 'org.json', module: 'json'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.4@aar', {
+        transitive = true
     }
     wearApp project(':wear')
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
     implementation 'com.google.android.gms:play-services-wearable:+'
 }

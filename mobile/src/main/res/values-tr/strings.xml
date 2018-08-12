@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appwidget_text">Coin</string>
+    <string name="add_widget">Add widget</string>
+    <string name="appwidget_title">Kripto Para Piyasasi</string>
+    <string name="edit">Düzenleme</string>
+    <string name="delete">widgeti resetleme</string>
+    <string name="tab_text_1">Coin Piyasası</string>
+    <string name="tab_text_2">Döviz Piyasası</string>
+    <string name="action_settings">Ayarlar</string>
+    <string name="sell">Satış:&#160;</string>
+    <string name="buy">Alış:&#160;</string>
+    <string name="currency_widget_title">Döviz Piyasası</string>
+    <string name="coin_title">Coin wigdet</string>
+    <string name="currency_title">Döviz Widget</string>
+    <string name="toast_message_1">%s parabirimi seçmelisinmiz</string>
+    <string name="toast_message_coin_limit">Limit %s coin dir</string>
+    <string name="toast_message_2">%s coin seçmelisiniz</string>
+    <string name="toast_message_currency_limit">Limit %s parabirimidir</string>
+    <string name="add_currencies">ekle</string>
+    <string name="add_coins">ekle</string>
+    <string name="refreshing">Yükleniyor</string>
+    <string name="coin_edit">Coin Düzenleme</string>
+    <string name="currency_edit">Döviz Düzenleme</string>
+    <string name="reset_coins">Coin resetleme</string>
+    <string name="reset_currency">Döviz Düzenleme</string>
+    <string name="about">Hakkında</string>
+    <string name="some_wrong">Bir hata oluştu</string>
+</resources>

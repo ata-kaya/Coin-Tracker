@@ -1,0 +1,226 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/appwidget_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:background="@color/background"
+            android:contentDescription="@string/appwidget_text"
+            android:gravity="center"
+            android:padding="@dimen/widget_margin"
+            android:text="@string/currency_widget_title"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:paddingBottom="5dp"
+            android:paddingEnd="@dimen/widget_margin"
+            android:paddingStart="@dimen/widget_margin"
+            android:paddingTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/appwidget_text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/appwidget_text"
+                android:textColor="#ffffff"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/appwidget_sell_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/appwidget_text_1"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/appwidget_text_1"
+                android:layout_toStartOf="@id/appwidget_percent_1"
+                android:contentDescription="@string/appwidget_text"
+                android:textColor="#ffffff"
+                android:textSize="14sp"/>
+
+
+            <TextView
+                android:id="@+id/appwidget_percent_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/appwidget_sell_1"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:textSize="14sp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/white"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:paddingBottom="5dp"
+            android:paddingEnd="@dimen/widget_margin"
+            android:paddingStart="@dimen/widget_margin"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/appwidget_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/appwidget_text"
+                android:textColor="#ffffff"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/appwidget_sell_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/appwidget_text_2"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/appwidget_text_2"
+                android:layout_toStartOf="@+id/appwidget_percent_2"
+                android:contentDescription="@string/appwidget_text"
+                android:textColor="#ffffff"
+                android:textSize="14sp"/>
+
+
+            <TextView
+                android:id="@+id/appwidget_percent_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/appwidget_sell_2"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:textSize="14sp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/white"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:paddingBottom="5dp"
+            android:paddingEnd="@dimen/widget_margin"
+            android:paddingStart="@dimen/widget_margin"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/appwidget_text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/appwidget_text"
+                android:textColor="#ffffff"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/appwidget_sell_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/appwidget_text_3"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/appwidget_text_3"
+                android:layout_toStartOf="@+id/appwidget_percent_3"
+                android:contentDescription="@string/appwidget_text"
+                android:textColor="#ffffff"
+                android:textSize="14sp"/>
+
+
+            <TextView
+                android:id="@+id/appwidget_percent_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/appwidget_sell_3"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:textSize="14sp"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/white"/>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:paddingBottom="5dp"
+            android:paddingEnd="@dimen/widget_margin"
+            android:paddingStart="@dimen/widget_margin"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/appwidget_text_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/appwidget_text"
+                android:textColor="#ffffff"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/appwidget_sell_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/appwidget_text_4"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/appwidget_text_4"
+                android:layout_toStartOf="@+id/appwidget_percent_4"
+                android:contentDescription="@string/appwidget_text"
+                android:textColor="#ffffff"
+                android:textSize="14sp"/>
+
+
+            <TextView
+                android:id="@+id/appwidget_percent_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/appwidget_sell_4"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:textSize="14sp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/main_layout"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@color/red"
+        android:textSize="20sp"/>
+
+</RelativeLayout>

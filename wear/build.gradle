@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.omidzamani.creptocoin"
+        applicationId "com.omidzamani.cointracker"
         minSdkVersion 22
         targetSdkVersion 26
         versionCode 1

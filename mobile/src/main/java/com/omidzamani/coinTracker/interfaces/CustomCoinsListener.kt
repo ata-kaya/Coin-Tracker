@@ -8,6 +8,3 @@ interface CustomCoinsListener {
     fun onCoinAddOrRemove()
 }
 
-interface CustomCurrencyListener {
-    fun onCurrencyAddOrRemove()
-}

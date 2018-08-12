@@ -20,4 +20,19 @@
     <string name="add_currencies">Add Currencies</string>
     <string name="add_coins">Add Coins</string>
     <string name="refreshing">Refreshing</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="coin_edit">Coin Edit</string>
+    <string name="currency_edit">Currency Edit</string>
+    <string name="reset_coins">Reset Coins</string>
+    <string name="reset_currency">Reset Currency</string>
+    <string name="about">About</string>
+    <string name="sure">Are you sure to reset custom %s from widget?</string>
+    <string name="succesfully_deleted">Custom %s for widget was succesfully deleted</string>
+    <string name="some_wrong">Something went wrong!</string>
+    <string name="items_added">custom %s was added for widget</string>
 </resources>

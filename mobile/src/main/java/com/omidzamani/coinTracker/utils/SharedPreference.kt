@@ -1,5 +1,6 @@
 package com.omidzamani.coinTracker.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 
@@ -11,12 +12,16 @@ import android.content.SharedPreferences
 const val CURRENCY_ALLOWED_SIZE = 4
 const val COIN_ALLOWED_SIZE = 4
 
+enum class Type{
+    COIN,
+    CURRENCY
+}
 
 class SharedPreference private constructor(val context: Context) {
 
 
-    var tempCoins: ArrayList<String> = ArrayList()
-    var tempCurrencies: ArrayList<String> = ArrayList()
+    private var tempCoins: ArrayList<String> = ArrayList()
+    private var tempCurrencies: ArrayList<String> = ArrayList()
 
     init {
         tempCoins = getCustomCoins()
@@ -45,6 +50,7 @@ class SharedPreference private constructor(val context: Context) {
     companion object {
 
 
+        @SuppressLint("StaticFieldLeak")
         private var instance: SharedPreference? = null
 
         fun getInstance(context: Context): SharedPreference {
@@ -58,11 +64,11 @@ class SharedPreference private constructor(val context: Context) {
     }
 
     fun getCustomCoins(): ArrayList<String> {
-        return getCustomItemsByKey("coin")
+        return getCustomItemsByKey(Type.COIN.name.toLowerCase())
     }
 
     fun getCustomCurrencies(): ArrayList<String> {
-        return getCustomItemsByKey("currency")
+        return getCustomItemsByKey(Type.CURRENCY.name.toLowerCase())
     }
 
 
@@ -80,11 +86,13 @@ class SharedPreference private constructor(val context: Context) {
 
     fun deleteAllCoins() {
 
-        deleteAllItems("coin")
+        deleteAllItems(Type.COIN.name.toLowerCase())
+        tempCoins = getCustomCoins()
     }
 
     fun deleteAllCurrencies() {
-        deleteAllItems("currency")
+        deleteAllItems(Type.CURRENCY.name.toLowerCase())
+        tempCurrencies = getCustomCurrencies()
     }
 
     private fun deleteAllItems(key: String) {
@@ -115,11 +123,11 @@ class SharedPreference private constructor(val context: Context) {
     }
 
     fun addCoins() {
-        addItems("coin", tempCoins)
+        addItems(Type.COIN.name.toLowerCase(), tempCoins)
     }
 
     fun addCurrencies() {
-        addItems("currency", tempCurrencies)
+        addItems(Type.CURRENCY.name.toLowerCase(), tempCurrencies)
     }
 
     private fun addItems(key: String, data: ArrayList<String>) {
@@ -132,9 +140,9 @@ class SharedPreference private constructor(val context: Context) {
         items = items.substring(0, items.length - 1)
         editor.putString(key, items)
         editor.apply()
-        if (key == "coin")
+        if (key == Type.COIN.name.toLowerCase())
             tempCoins = getCustomCoins()
-        else if (key == "currency")
+        else if (key == Type.CURRENCY.name.toLowerCase())
             tempCurrencies = getCustomCurrencies()
     }
 

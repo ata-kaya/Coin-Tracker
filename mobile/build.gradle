@@ -41,13 +41,13 @@ android {
         demo {
             applicationIdSuffix ".demo"
             versionNameSuffix "-demo"
-            resValue("string", "currency_api", "https://www.doviz.com/api/v1/currencies/all/latest")
-            resValue("string", "coin_api", "https://api.coinmarketcap.com/v1/ticker")
+            buildConfigField "String", "currency_api",  '"https://www.doviz.com/api/v1/currencies/all/latest"'
+            buildConfigField "String", "coin_api", '"https://api.coinmarketcap.com/v1/ticker"'
         }
 
         store {
-            resValue("string", "currency_api", "https://www.doviz.com/api/v1/currencies/all/latest")
-            resValue("string", "coin_api", "https://api.coinmarketcap.com/v1/ticker")
+            buildConfigField("String", "currency_api", '"https://www.doviz.com/api/v1/currencies/all/latest"')
+            buildConfigField("String", "coin_api", '"https://api.coinmarketcap.com/v1/ticker"')
         }
     }
 }
@@ -59,6 +59,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
+    implementation "org.jetbrains.anko:anko:0.10.5"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

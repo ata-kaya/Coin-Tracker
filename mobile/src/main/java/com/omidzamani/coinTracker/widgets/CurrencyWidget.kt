@@ -7,15 +7,13 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.content.ContextCompat
 import android.widget.RemoteViews
+import com.omidzamani.coinTracker.API
 import com.omidzamani.coinTracker.R
 import com.omidzamani.coinTracker.model.Currency
+import com.omidzamani.coinTracker.interfaces.CurrencyResponse
 import com.omidzamani.coinTracker.utils.CURRENCY_ALLOWED_SIZE
 import com.omidzamani.coinTracker.utils.SharedPreference
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.Response
-import org.json.JSONArray
-import java.io.IOException
+import org.jetbrains.anko.longToast
 
 /**
  * Implementation of App Widget functionality.
@@ -46,34 +44,29 @@ class CurrencyWidget : AppWidgetProvider() {
             views.setTextViewText(R.id.btn1, context.getString(R.string.refreshing))
             views.setInt(R.id.btn1, "setBackgroundResource", R.color.black_transparent)
             appWidgetManager.updateAppWidget(appWidgetId, views)
-            getPrices(context, object : Callback {
-                override fun onResponse(call: Call?, response: Response) {
-                    if (response.isSuccessful) {
-                        var list: ArrayList<Currency> = ArrayList()
-                        val res = response.body()!!.string()
-                        val array = JSONArray(res)
-                        (0 until array.length())
-                                .mapTo(list) {
-                                    Currency(array.optJSONObject(it))
-                                }
-                        val tempList: ArrayList<Currency> = ArrayList()
-                        list = if (SharedPreference.getInstance(context).hasCustomCurrency()) {
-                            val currencies: ArrayList<String> = SharedPreference.getInstance(context).getCustomCurrencies()
-                            for (i in 0 until currencies.size)
-                                tempList.addAll(list.filter { currency -> currency.currencySymbol == currencies[i] })
-                            tempList
-                        } else {
-                            ArrayList(list.subList(0, CURRENCY_ALLOWED_SIZE))
-                        }
-                        views.setTextViewText(R.id.btn1, "")
-                        views.setInt(R.id.btn1, "setBackgroundResource", android.R.color.transparent)
-                        reRenderWidget(context, views, appWidgetManager, appWidgetId, list)
+            API.instance.getCurrencies(object: CurrencyResponse {
+                override fun onResponse(currencies: ArrayList<Currency>) {
+                    val tempList: ArrayList<Currency> = ArrayList()
+                    var list = currencies
+                    list = if (SharedPreference.getInstance(context).hasCustomCurrency()) {
+                        val subCurrencies: ArrayList<String> = SharedPreference.getInstance(context).getCustomCurrencies()
+                        for (i in 0 until subCurrencies.size)
+                            tempList.addAll(list.filter { currency -> currency.currencySymbol == subCurrencies[i] })
+                        tempList
+                    } else {
+                        ArrayList(list.subList(0, CURRENCY_ALLOWED_SIZE))
                     }
+                    views.setTextViewText(R.id.btn1, "")
+                    views.setInt(R.id.btn1, "setBackgroundResource", android.R.color.transparent)
+                    reRenderWidget(context, views, appWidgetManager, appWidgetId, list)
                 }
 
-                override fun onFailure(call: Call?, e: IOException?) {}
+                override fun onFail(responseCode: Int) {
+                    context.longToast(R.string.some_wrong)
+                }
 
             })
+
 
         }
 
@@ -109,9 +102,6 @@ class CurrencyWidget : AppWidgetProvider() {
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
 
-        private fun getPrices(context: Context, callback: Callback) {
-            API.instance.run(context.getString(R.string.currency_api), callback)
-        }
 
         private fun getCurrencyNameViewId(index: Int): Int {
             val ids: IntArray = intArrayOf(

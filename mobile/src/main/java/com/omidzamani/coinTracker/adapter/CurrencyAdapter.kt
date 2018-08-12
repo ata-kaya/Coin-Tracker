@@ -10,11 +10,11 @@ import android.widget.CheckBox
 import android.widget.TextView
 import com.omidzamani.coinTracker.R
 import kotlinx.android.synthetic.main.currency_list.view.*
-import android.widget.Toast
 import com.omidzamani.coinTracker.interfaces.CustomCurrencyListener
 import com.omidzamani.coinTracker.model.Currency
 import com.omidzamani.coinTracker.utils.CURRENCY_ALLOWED_SIZE
 import com.omidzamani.coinTracker.utils.SharedPreference
+import org.jetbrains.anko.longToast
 import java.util.*
 
 
@@ -56,7 +56,7 @@ class CurrencyAdapter constructor(private val listener: CustomCurrencyListener,
                 if (isChecked) {
                     if (!SharedPreference.getInstance(context).canAddCustomCurrency()) {
                         buttonView.isChecked = false
-                        Toast.makeText(context, String.format(context.getString(R.string.toast_message_currency_limit), CURRENCY_ALLOWED_SIZE), Toast.LENGTH_LONG).show()
+                        context.longToast(String.format(context.getString(R.string.toast_message_currency_limit), CURRENCY_ALLOWED_SIZE))
                     } else {
                         SharedPreference.getInstance(context).addCurrency(item.currencySymbol as String)
                     }

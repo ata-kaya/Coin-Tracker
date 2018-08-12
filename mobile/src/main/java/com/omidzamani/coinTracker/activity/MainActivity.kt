@@ -1,22 +1,34 @@
 package com.omidzamani.coinTracker.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.support.design.widget.TabLayout
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
-import android.view.Menu
+import android.support.design.widget.NavigationView
+import android.support.v4.view.GravityCompat
+import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import com.omidzamani.coinTracker.fragment.CoinFragment
 
 import com.omidzamani.coinTracker.R
+import com.omidzamani.coinTracker.R.id.*
 import com.omidzamani.coinTracker.fragment.CurrencyFragment
+import com.omidzamani.coinTracker.utils.SharedPreference
+import com.omidzamani.coinTracker.utils.Type
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.longToast
+import org.jetbrains.anko.noButton
+import org.jetbrains.anko.yesButton
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
 
     /**
      * The [android.support.v4.view.PagerAdapter] that will provide
@@ -43,7 +55,62 @@ class MainActivity : AppCompatActivity() {
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
+        val toggle = ActionBarDrawerToggle(
+                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
 
+        nav_view.setNavigationItemSelectedListener(this)
+
+
+    }
+
+
+    override fun onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            reset_coins ->
+                resetItems(Type.COIN.name.toLowerCase())
+            reset_currency ->
+                resetItems(Type.CURRENCY.name.toLowerCase())
+            coin_edit ->
+                startEditActivity(Type.COIN.name.toLowerCase())
+            currency_edit ->
+                startEditActivity(Type.CURRENCY.name.toLowerCase())
+            about ->
+                startActivity(Intent (Intent.ACTION_VIEW, Uri.parse("https://github.com/omid-zamani")))
+
+        }
+        return true
+    }
+
+    private fun startEditActivity(itemName: String) {
+        val intent = Intent(this, ListActivity::class.java)
+        intent.putExtra("itemName", itemName)
+        startActivity(intent)
+    }
+
+    private fun resetItems(itemName: String) {
+        alert(String.format(getString(R.string.sure), itemName), getString(android.R.string.dialog_alert_title)) {
+            yesButton {
+                when (itemName) {
+                    Type.COIN.name.toLowerCase() -> SharedPreference.getInstance(this@MainActivity).deleteAllCoins()
+                    Type.CURRENCY.name.toLowerCase() -> SharedPreference.getInstance(this@MainActivity).deleteAllCurrencies()
+                }
+                longToast(String.format(getString(R.string.succesfully_deleted), itemName))
+            }
+            noButton {
+
+            }
+        }.show()
     }
 
 

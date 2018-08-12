@@ -12,10 +12,10 @@ import com.omidzamani.coinTracker.model.Coin
 import com.omidzamani.coinTracker.R
 import kotlinx.android.synthetic.main.coin_list.view.*
 import java.util.ArrayList
-import android.widget.Toast
 import com.omidzamani.coinTracker.interfaces.CustomCoinsListener
 import com.omidzamani.coinTracker.utils.COIN_ALLOWED_SIZE
 import com.omidzamani.coinTracker.utils.SharedPreference
+import org.jetbrains.anko.longToast
 
 
 /**
@@ -56,7 +56,7 @@ class CoinAdapter constructor(private val listener: CustomCoinsListener,
                 if (isChecked) {
                     if (!SharedPreference.getInstance(context).canAddCustomCoin()) {
                         buttonView.isChecked = false
-                        Toast.makeText(context, String.format(context.getString(R.string.toast_message_coin_limit), COIN_ALLOWED_SIZE), Toast.LENGTH_LONG).show()
+                        context.longToast(String.format(context.getString(R.string.toast_message_coin_limit), COIN_ALLOWED_SIZE))
                     } else {
                         SharedPreference.getInstance(context).addCoin(item.coinSymbol as String)
                     }

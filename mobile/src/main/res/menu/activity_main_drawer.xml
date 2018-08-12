@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:id="@+id/menu_group" android:checkableBehavior="single">
+        <item
+            android:id="@+id/coin_edit"
+            android:icon="@drawable/ic_attach_money_black_24dp"
+            android:title="@string/coin_edit"/>
+        <item
+            android:id="@+id/currency_edit"
+            android:icon="@drawable/ic_monetization_on_black_24dp"
+            android:title="@string/currency_edit"/>
+        <item
+            android:id="@+id/reset_coins"
+            android:icon="@drawable/ic_settings_backup_restore_black_24dp"
+            android:title="@string/reset_coins"/>
+        <item
+            android:id="@+id/reset_currency"
+            android:icon="@drawable/ic_settings_backup_restore_black_24dp"
+            android:title="@string/reset_currency"/>
+    </group>
+
+
+
+        <group android:id="@+id/about_group" android:checkableBehavior="single">
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/ic_menu_github"
+                android:title="@string/about"/>
+
+        </group>
+
+
+</menu>

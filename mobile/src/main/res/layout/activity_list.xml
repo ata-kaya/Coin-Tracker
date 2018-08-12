@@ -4,23 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.omidzamani.coinTracker.activity.MainActivity"
+    tools:context="com.omidzamani.coinTracker.activity.ListActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/add_button"
-        >
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/currency_list"
+            android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"/>
 
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/add_coins"/>
 
 </RelativeLayout>

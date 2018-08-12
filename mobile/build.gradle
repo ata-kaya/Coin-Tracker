@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'io.fabric'
+
+
 android {
     compileSdkVersion 26
     flavorDimensions "default"
@@ -14,6 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [APIKey:fabric_key]
     }
     signingConfigs {
         release {
@@ -41,11 +45,13 @@ android {
         demo {
             applicationIdSuffix ".demo"
             versionNameSuffix "-demo"
+            resValue "string", "app_name", '"Coin Tracker Demo"'
             buildConfigField "String", "currency_api",  '"https://www.doviz.com/api/v1/currencies/all/latest"'
             buildConfigField "String", "coin_api", '"https://api.coinmarketcap.com/v1/ticker"'
         }
 
         store {
+            resValue "string", "app_name", '"Coin Tracker"'
             buildConfigField("String", "currency_api", '"https://www.doviz.com/api/v1/currencies/all/latest"')
             buildConfigField("String", "coin_api", '"https://api.coinmarketcap.com/v1/ticker"')
         }
@@ -66,6 +72,9 @@ dependencies {
     }
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.4@aar', {
+        transitive = true
     }
     wearApp project(':wear')
     compile 'com.squareup.okhttp3:okhttp:3.6.0'

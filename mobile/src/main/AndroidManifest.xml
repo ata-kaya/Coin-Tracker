@@ -54,6 +54,9 @@
         <activity android:name=".activity.ListActivity"
                   android:parentActivityName=".activity.MainActivity" >
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="${APIKey}"/>
     </application>
 
 </manifest>

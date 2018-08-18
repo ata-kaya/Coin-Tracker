@@ -93,7 +93,9 @@ class ListActivity : AppCompatActivity(), CustomCoinsListener, CustomCurrencyLis
             }
 
             override fun onFail(responseCode: Int) {
-                longToast(R.string.some_wrong)
+                Handler(Looper.getMainLooper()).post {
+                    longToast(R.string.some_wrong)
+                }
             }
 
         })
@@ -109,7 +111,9 @@ class ListActivity : AppCompatActivity(), CustomCoinsListener, CustomCurrencyLis
             }
 
             override fun onFail(responseCode: Int) {
-                longToast(R.string.some_wrong)
+                Handler(Looper.getMainLooper()).post{
+                    longToast(R.string.some_wrong)
+                }
             }
 
         })

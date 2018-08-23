@@ -34,4 +34,10 @@
     <string name="succesfully_deleted">Custom %s for widget was succesfully deleted</string>
     <string name="some_wrong">Something went wrong!</string>
     <string name="items_added">custom %s was added for widget</string>
+    <string name="tracking">Tracking</string>
+    <array name="tracking_mode">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </array>
 </resources>

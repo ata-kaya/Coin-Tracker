@@ -1,15 +1,19 @@
 package com.omidzamani.coinTracker.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.omidzamani.coinTracker.model.Coin
 import com.omidzamani.coinTracker.R
+import com.omidzamani.coinTracker.activity.DetailActivity
 import kotlinx.android.synthetic.main.coin_list.view.*
 import java.util.ArrayList
 import com.omidzamani.coinTracker.interfaces.CustomCoinsListener
@@ -69,6 +73,13 @@ class CoinAdapter constructor(private val listener: CustomCoinsListener,
         } else {
             holder.checkBox.visibility = View.GONE
         }
+
+        holder.rootView.setOnClickListener {
+            Log.d("omid", "test   " + item)
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("Value", item)
+            context.startActivity(intent)
+        }
     }
 
 
@@ -92,6 +103,7 @@ class CoinAdapter constructor(private val listener: CustomCoinsListener,
         var dollar: TextView = view.dolar
         var percent: TextView = view.percent
         var checkBox: CheckBox = view.check
+        var rootView:LinearLayout = view.root_layout
 
     }
 

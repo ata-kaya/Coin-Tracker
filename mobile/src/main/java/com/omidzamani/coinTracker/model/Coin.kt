@@ -2,6 +2,7 @@ package com.omidzamani.coinTracker.model
 
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.Serializable
 
 /**
  * Created by omidzamani on 15.07.2018.
@@ -27,7 +28,7 @@ class Coin
 "last_updated": "1513528799"
 */
 @Throws(JSONException::class)
-constructor(item: JSONObject) {
+constructor(item: JSONObject) : Serializable {
     var coinName: String? = null
         private set
     var coinPrice: Double? = null
@@ -38,8 +39,10 @@ constructor(item: JSONObject) {
         private set
     var coinSymbol: String? = null
         private set
-    private var coinPercent24h: String? = null
-    private var coinPercent7d: String? = null
+    var coinPercent24h: String? = null
+        private set
+    var coinPercent7d: String? = null
+        private set
 
 
     init {

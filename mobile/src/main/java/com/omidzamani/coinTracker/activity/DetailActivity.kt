@@ -7,7 +7,6 @@ import android.os.Handler
 import android.os.Looper
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatTextView
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -181,12 +180,10 @@ class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     //spinner impl
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        Log.d("sf","dfdsfgdg")
 
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        Log.d("sf","dfdsfgdg")
         val selectedText = (view as AppCompatTextView).text.toString()
         val type = when {
             selectedText.toLowerCase() == TrackerType.WEEKLY.toString().toLowerCase() -> TrackerType.WEEKLY

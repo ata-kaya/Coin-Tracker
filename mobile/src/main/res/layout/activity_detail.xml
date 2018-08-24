@@ -35,7 +35,6 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="BTC"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/price_btc_title"
@@ -49,7 +48,6 @@
         android:layout_height="18dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:text="Price(BTC)"
         app:layout_constraintBottom_toTopOf="@+id/price_usd_title"
         app:layout_constraintStart_toStartOf="@+id/text"
         app:layout_constraintTop_toBottomOf="@+id/coin_name"/>
@@ -59,7 +57,6 @@
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginBottom="8dp"
-        android:text="Price(USD)"
         app:layout_constraintBottom_toTopOf="@+id/an_hour_change_title"
         app:layout_constraintStart_toStartOf="@+id/price_btc_title"
         app:layout_constraintTop_toBottomOf="@+id/price_btc_title"/>
@@ -69,7 +66,6 @@
         android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:layout_marginBottom="8dp"
-        android:text="1 Hour Change"
         app:layout_constraintBottom_toTopOf="@+id/a_day_change_title"
         app:layout_constraintStart_toStartOf="@+id/price_usd_title"
         app:layout_constraintTop_toBottomOf="@+id/price_usd_title"/>
@@ -79,7 +75,6 @@
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginBottom="8dp"
-        android:text="24 Hours Change"
         app:layout_constraintBottom_toTopOf="@+id/a_week_change_title"
         app:layout_constraintStart_toStartOf="@+id/an_hour_change_title"
         app:layout_constraintTop_toBottomOf="@+id/an_hour_change_title"/>
@@ -89,7 +84,6 @@
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginBottom="8dp"
-        android:text="A Week Change"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/a_day_change_title"
         app:layout_constraintTop_toBottomOf="@+id/a_day_change_title"/>
@@ -99,7 +93,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/price_btc_title"
         app:layout_constraintStart_toEndOf="@+id/price_btc_title"/>
 
@@ -108,7 +101,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/price_usd_title"
         app:layout_constraintStart_toEndOf="@+id/price_usd_title"/>
 
@@ -117,7 +109,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/an_hour_change_title"
         app:layout_constraintStart_toEndOf="@+id/an_hour_change_title"/>
 
@@ -126,7 +117,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/a_day_change_title"
         app:layout_constraintStart_toEndOf="@+id/a_day_change_title"/>
 
@@ -135,7 +125,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/a_week_change_title"
         app:layout_constraintStart_toEndOf="@+id/a_week_change_title"/>
 
@@ -145,7 +134,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="OMID ZAMANI"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/chart"
@@ -158,7 +146,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="TextView"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/chart"
         app:layout_constraintStart_toStartOf="@+id/chart"

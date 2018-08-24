@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     Type.COIN.name.toLowerCase() -> SharedPreference.getInstance(this@MainActivity).deleteAllCoins()
                     Type.CURRENCY.name.toLowerCase() -> SharedPreference.getInstance(this@MainActivity).deleteAllCurrencies()
                 }
-                longToast(String.format(getString(R.string.succesfully_deleted), itemName))
+                longToast(String.format(getString(R.string.successfully_deleted), itemName))
             }
             noButton {
 

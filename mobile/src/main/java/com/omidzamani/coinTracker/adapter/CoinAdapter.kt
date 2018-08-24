@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -75,7 +74,6 @@ class CoinAdapter constructor(private val listener: CustomCoinsListener,
         }
 
         holder.rootView.setOnClickListener {
-            Log.d("omid", "test   " + item)
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("Value", item)
             context.startActivity(intent)

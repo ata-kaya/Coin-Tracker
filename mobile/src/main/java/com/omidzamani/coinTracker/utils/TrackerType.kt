@@ -1,7 +1,5 @@
 package com.omidzamani.coinTracker.utils
 
-import android.os.Parcel
-import android.os.Parcelable
 import com.omidzamani.coinTracker.interfaces.TrackerTypesInterface
 
 enum class TrackerType : TrackerTypesInterface {

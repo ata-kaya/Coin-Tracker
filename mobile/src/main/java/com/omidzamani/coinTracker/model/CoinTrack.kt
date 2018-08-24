@@ -2,6 +2,7 @@ package com.omidzamani.coinTracker.model
 
 import java.io.Serializable
 
+@Suppress("unused", "PropertyName")
 class CoinTrack
 
     /*
@@ -30,11 +31,8 @@ class CoinTrack
     }
      */
     : Serializable {
-    @SuppressWarnings("unused")
     var Response: String ? = null
-    @SuppressWarnings("unused")
     var TimeFrom: Long ? = null
-    @SuppressWarnings("unused")
     var TimeTo: Long ? = null
     var Data: ArrayList<TrackerData> ? = null
 

@@ -1,5 +1,6 @@
 package com.omidzamani.coinTracker.model
 
+@Suppress("unused")
 class TrackerData {
     /*
     "time": 1534291200,

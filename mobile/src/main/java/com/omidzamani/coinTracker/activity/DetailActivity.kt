@@ -174,7 +174,9 @@ class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         chart.data = LineData(dataSet)
         chart.data.isHighlightEnabled = true
-        chart.invalidate()
+        Handler(Looper.getMainLooper()).post {
+            chart.invalidate()
+        }
 
     }
 

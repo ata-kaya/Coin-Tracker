@@ -35,6 +35,11 @@
     <string name="some_wrong">Something went wrong!</string>
     <string name="items_added">custom %s was added for widget</string>
     <string name="tracking">Tracking</string>
+    <string name="price_btc">Price(BTC)</string>
+    <string name="price_usd">Price(USD)</string>
+    <string name="an_hour_change">1 Hour Change</string>
+    <string name="a_day_change">24 Hours Change</string>
+    <string name="a_week_change">A Week Change</string>
     <array name="tracking_mode">
         <item>Daily</item>
         <item>Weekly</item>

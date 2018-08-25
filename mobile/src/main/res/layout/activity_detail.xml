@@ -48,6 +48,7 @@
         android:layout_height="18dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
+        android:text="@string/price_btc"
         app:layout_constraintBottom_toTopOf="@+id/price_usd_title"
         app:layout_constraintStart_toStartOf="@+id/text"
         app:layout_constraintTop_toBottomOf="@+id/coin_name"/>
@@ -57,6 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginBottom="8dp"
+        android:text="@string/price_usd"
         app:layout_constraintBottom_toTopOf="@+id/an_hour_change_title"
         app:layout_constraintStart_toStartOf="@+id/price_btc_title"
         app:layout_constraintTop_toBottomOf="@+id/price_btc_title"/>
@@ -66,6 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:layout_marginBottom="8dp"
+        android:text="@string/an_hour_change"
         app:layout_constraintBottom_toTopOf="@+id/a_day_change_title"
         app:layout_constraintStart_toStartOf="@+id/price_usd_title"
         app:layout_constraintTop_toBottomOf="@+id/price_usd_title"/>
@@ -75,6 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginBottom="8dp"
+        android:text="@string/a_day_change"
         app:layout_constraintBottom_toTopOf="@+id/a_week_change_title"
         app:layout_constraintStart_toStartOf="@+id/an_hour_change_title"
         app:layout_constraintTop_toBottomOf="@+id/an_hour_change_title"/>
@@ -84,6 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginBottom="8dp"
+        android:text="@string/a_week_change"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/a_day_change_title"
         app:layout_constraintTop_toBottomOf="@+id/a_day_change_title"/>

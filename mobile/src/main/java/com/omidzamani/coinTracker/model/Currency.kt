@@ -2,6 +2,7 @@ package com.omidzamani.coinTracker.model
 
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.Serializable
 
 /**
  * Created by omidzamani on 15.07.2018.
@@ -20,7 +21,7 @@ class Currency
 "code": "EUR"
 */
 @Throws(JSONException::class)
-constructor(item: JSONObject) {
+constructor(item: JSONObject) : Serializable{
     var currencyFullName: String? = null
         private set
     var currencyPriceBuy: Double? = null

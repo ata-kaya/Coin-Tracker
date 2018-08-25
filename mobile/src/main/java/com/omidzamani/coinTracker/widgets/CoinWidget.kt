@@ -5,6 +5,8 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.support.v4.content.ContextCompat
 import android.widget.RemoteViews
 import com.omidzamani.coinTracker.API
@@ -63,7 +65,9 @@ class CoinWidget : AppWidgetProvider() {
                 }
 
                 override fun onFail(responseCode: Int) {
-                    context.longToast(R.string.some_wrong)
+                    Handler(Looper.getMainLooper()).post {
+                        context.longToast(R.string.some_wrong)
+                    }
                 }
 
             })

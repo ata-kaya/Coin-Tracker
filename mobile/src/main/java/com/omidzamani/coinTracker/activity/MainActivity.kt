@@ -27,6 +27,7 @@ import org.jetbrains.anko.longToast
 import org.jetbrains.anko.noButton
 import org.jetbrains.anko.yesButton
 import com.crashlytics.android.Crashlytics
+import com.omidzamani.coinTracker.BuildConfig
 import io.fabric.sdk.android.Fabric
 
 
@@ -63,7 +64,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-        Fabric.with(this, Crashlytics())
+        if (!BuildConfig.DEBUG) {
+            Fabric.with(this, Crashlytics())
+        }
         nav_view.setNavigationItemSelectedListener(this)
 
 
@@ -90,7 +93,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             currency_edit ->
                 startEditActivity(Type.CURRENCY.name.toLowerCase())
             about ->
-                startActivity(Intent (Intent.ACTION_VIEW, Uri.parse("https://github.com/omid-zamani")))
+                startActivity(Intent (Intent.ACTION_VIEW, Uri.parse("https://github.com/omid-zamani/Coin-Tracker")))
 
         }
         return true
@@ -109,7 +112,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     Type.COIN.name.toLowerCase() -> SharedPreference.getInstance(this@MainActivity).deleteAllCoins()
                     Type.CURRENCY.name.toLowerCase() -> SharedPreference.getInstance(this@MainActivity).deleteAllCurrencies()
                 }
-                longToast(String.format(getString(R.string.succesfully_deleted), itemName))
+                longToast(String.format(getString(R.string.successfully_deleted), itemName))
             }
             noButton {
 

@@ -10,7 +10,7 @@
     <string name="sell">Sell:&#160;</string>
     <string name="buy">Buy:&#160;</string>
     <string name="currency_widget_title">Currency Table</string>
-    <string name="coin_title">Coin wigdet</string>
+    <string name="coin_title">Coin widget</string>
     <string name="currency_title">Currency Widget</string>
     <string name="toast_message_1">You should select %s currency</string>
     <string name="toast_message_coin_limit">Limit is %s coins</string>
@@ -31,7 +31,18 @@
     <string name="reset_currency">Reset Currency</string>
     <string name="about">About</string>
     <string name="sure">Are you sure to reset custom %s from widget?</string>
-    <string name="succesfully_deleted">Custom %s for widget was succesfully deleted</string>
+    <string name="successfully_deleted">Custom %s for widget was successfully deleted</string>
     <string name="some_wrong">Something went wrong!</string>
     <string name="items_added">custom %s was added for widget</string>
+    <string name="tracking">Tracking</string>
+    <string name="price_btc">Price(BTC)</string>
+    <string name="price_usd">Price(USD)</string>
+    <string name="an_hour_change">1 Hour Change</string>
+    <string name="a_day_change">24 Hours Change</string>
+    <string name="a_week_change">A Week Change</string>
+    <array name="tracking_mode">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </array>
 </resources>

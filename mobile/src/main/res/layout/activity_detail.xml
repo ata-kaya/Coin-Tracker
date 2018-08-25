@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/item_background_color"
+    tools:context="com.omidzamani.coinTracker.activity.DetailActivity">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tracking"
+        app:layout_constraintStart_toStartOf="@+id/chart"
+        app:layout_constraintTop_toBottomOf="@+id/chart"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/chart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/text"
+        app:layout_constraintTop_toTopOf="@+id/text"/>
+
+    <TextView
+        android:id="@+id/coin_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/price_btc_title"
+        app:layout_constraintStart_toStartOf="@+id/text"
+        app:layout_constraintTop_toBottomOf="@+id/text"
+        app:layout_constraintVertical_chainStyle="spread"/>
+
+    <TextView
+        android:id="@+id/price_btc_title"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/price_btc"
+        app:layout_constraintBottom_toTopOf="@+id/price_usd_title"
+        app:layout_constraintStart_toStartOf="@+id/text"
+        app:layout_constraintTop_toBottomOf="@+id/coin_name"/>
+
+    <TextView
+        android:id="@+id/price_usd_title"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/price_usd"
+        app:layout_constraintBottom_toTopOf="@+id/an_hour_change_title"
+        app:layout_constraintStart_toStartOf="@+id/price_btc_title"
+        app:layout_constraintTop_toBottomOf="@+id/price_btc_title"/>
+
+    <TextView
+        android:id="@+id/an_hour_change_title"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/an_hour_change"
+        app:layout_constraintBottom_toTopOf="@+id/a_day_change_title"
+        app:layout_constraintStart_toStartOf="@+id/price_usd_title"
+        app:layout_constraintTop_toBottomOf="@+id/price_usd_title"/>
+
+    <TextView
+        android:id="@+id/a_day_change_title"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/a_day_change"
+        app:layout_constraintBottom_toTopOf="@+id/a_week_change_title"
+        app:layout_constraintStart_toStartOf="@+id/an_hour_change_title"
+        app:layout_constraintTop_toBottomOf="@+id/an_hour_change_title"/>
+
+    <TextView
+        android:id="@+id/a_week_change_title"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/a_week_change"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/a_day_change_title"
+        app:layout_constraintTop_toBottomOf="@+id/a_day_change_title"/>
+
+    <TextView
+        android:id="@+id/price_btc_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/price_btc_title"
+        app:layout_constraintStart_toEndOf="@+id/price_btc_title"/>
+
+    <TextView
+        android:id="@+id/price_usd_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/price_usd_title"
+        app:layout_constraintStart_toEndOf="@+id/price_usd_title"/>
+
+    <TextView
+        android:id="@+id/an_hour_change_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/an_hour_change_title"
+        app:layout_constraintStart_toEndOf="@+id/an_hour_change_title"/>
+
+    <TextView
+        android:id="@+id/a_day_change_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/a_day_change_title"
+        app:layout_constraintStart_toEndOf="@+id/a_day_change_title"/>
+
+    <TextView
+        android:id="@+id/a_week_change_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/a_week_change_title"
+        app:layout_constraintStart_toEndOf="@+id/a_week_change_title"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="0dp"
+        android:layout_height="260dp"
+        android:background="@color/black"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+    <TextView
+        android:id="@+id/selected_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/chart"
+        app:layout_constraintStart_toStartOf="@+id/chart"
+        app:layout_constraintTop_toTopOf="@+id/chart"/>
+
+
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/chart"
+        app:layout_constraintStart_toStartOf="@+id/chart"
+        app:layout_constraintTop_toBottomOf="@+id/selected_price"/>
+
+
+
+</android.support.constraint.ConstraintLayout>

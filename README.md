@@ -14,6 +14,7 @@ App was written with kotlin
 The sources that are used for app are:
 
 * [Coin Market Cap](https://api.coinmarketcap.com/v1/) - used for cryptoCoins
+* [Coin Tracking](https://min-api.cryptocompare.com/) - for detail page
 * [Doviz.com Api](https://www.doviz.com/api/v1/) - used for foreign currencies based on Turkish Lira
 
 ### Installing
@@ -37,6 +38,9 @@ fabric_key=********************************
 * [Anko](https://github.com/Kotlin/anko) - used for alerts and Dialogs
 * [Fabric](https://fabric.io/) - Dependency Management
 * [okhttp3](https://github.com/square/okhttp) - Used to generate RSS Feeds
+* [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) - used in detailed activity for coins 
+* [Gson](https://github.com/google/gson) - general using
+
 
 
 ## License

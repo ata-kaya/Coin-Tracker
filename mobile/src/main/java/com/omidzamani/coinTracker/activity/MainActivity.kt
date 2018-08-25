@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             currency_edit ->
                 startEditActivity(Type.CURRENCY.name.toLowerCase())
             about ->
-                startActivity(Intent (Intent.ACTION_VIEW, Uri.parse("https://github.com/omid-zamani")))
+                startActivity(Intent (Intent.ACTION_VIEW, Uri.parse("https://github.com/omid-zamani/Coin-Tracker")))
 
         }
         return true

@@ -131,9 +131,11 @@ class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
 
             override fun onValueSelected(e: Entry?, h: Highlight) {
-                val dateString = chartDateFormat.format(h.x.toLong() * 1000)
-                selected_price.text = currencyFormatter.format(h.y.toDouble())
-                date.text = dateString
+                Handler(Looper.getMainLooper()).post {
+                    val dateString = chartDateFormat.format(h.x.toLong() * 1000)
+                    selected_price.text = currencyFormatter.format(h.y.toDouble())
+                    date.text = dateString
+                }
             }
 
         })
@@ -145,7 +147,7 @@ class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
         leftYAxis.textColor = whiteColor
         leftYAxis.gridColor = whiteColor
-        leftYAxis.spaceTop = 2f
+        leftYAxis.spaceTop = 25f
         leftYAxis.setLabelCount(4, false)
 
 
